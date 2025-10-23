@@ -24,4 +24,26 @@ enum DistanceUnit: String, CaseIterable, Codable {
     var abbreviation: String {
         return rawValue
     }
+
+    var shortName: String {
+        return rawValue
+    }
+
+    var name: String {
+        switch self {
+        case .kilometers:
+            return "kilometer"
+        case .miles:
+            return "mile"
+        }
+    }
+
+    var metersPerUnit: Double {
+        switch self {
+        case .kilometers:
+            return 1000.0
+        case .miles:
+            return 1609.344
+        }
+    }
 }

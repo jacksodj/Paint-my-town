@@ -36,8 +36,35 @@ class AppCoordinator: ObservableObject, Coordinator {
     // MARK: - Coordinator
 
     func start() {
+        registerDependencies()
         setupTabCoordinators()
         setupDeepLinking()
+    }
+
+    // MARK: - Dependency Registration
+
+    private func registerDependencies() {
+        let container = DependencyContainer.shared
+
+        // Register repositories if not already registered
+        if !container.isRegistered(ActivityRepositoryProtocol.self) {
+            let coreDataStack = CoreDataStack.shared
+            let activityRepo = ActivityRepository(context: coreDataStack.mainContext)
+            container.register(ActivityRepositoryProtocol.self, instance: activityRepo)
+        }
+
+        // Register services
+        if !container.isRegistered(LocationServiceProtocol.self) {
+            let locationService = LocationService()
+            container.register(LocationServiceProtocol.self, instance: locationService)
+        }
+
+        if !container.isRegistered(WorkoutServiceProtocol.self) {
+            let locationService = container.resolve(LocationServiceProtocol.self)
+            let activityRepo = container.resolve(ActivityRepositoryProtocol.self)
+            let workoutService = WorkoutService(locationService: locationService, repository: activityRepo)
+            container.register(WorkoutServiceProtocol.self, instance: workoutService)
+        }
     }
 
     // MARK: - Private Methods

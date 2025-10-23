@@ -105,6 +105,130 @@ class CoreDataStack {
             NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [viewContext])
         }
     }
+
+    /// Perform a batch insert request with progress reporting
+    /// - Parameters:
+    ///   - entityName: Name of the entity to insert
+    ///   - objects: Array of dictionaries containing the data to insert
+    ///   - progressHandler: Optional closure called with progress updates (current, total)
+    /// - Returns: Array of NSManagedObjectIDs of inserted objects
+    @discardableResult
+    func batchInsert(
+        entityName: String,
+        objects: [[String: Any]],
+        progressHandler: ((Int, Int) -> Void)? = nil
+    ) throws -> [NSManagedObjectID] {
+        guard !objects.isEmpty else { return [] }
+
+        let context = newBackgroundContext()
+        var insertedObjectIDs: [NSManagedObjectID] = []
+
+        try context.performAndWait {
+            // For very large datasets (> 1000), use NSBatchInsertRequest
+            if objects.count > 1000 {
+                insertedObjectIDs = try performBatchInsertRequest(
+                    entityName: entityName,
+                    objects: objects,
+                    context: context,
+                    progressHandler: progressHandler
+                )
+            } else {
+                // For smaller datasets, use regular inserts (faster for small batches)
+                insertedObjectIDs = try performRegularInsert(
+                    entityName: entityName,
+                    objects: objects,
+                    context: context,
+                    progressHandler: progressHandler
+                )
+            }
+        }
+
+        // Merge changes to view context
+        let changes = [NSInsertedObjectsKey: insertedObjectIDs]
+        NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [viewContext])
+
+        return insertedObjectIDs
+    }
+
+    /// Perform batch insert using NSBatchInsertRequest for large datasets
+    private func performBatchInsertRequest(
+        entityName: String,
+        objects: [[String: Any]],
+        context: NSManagedObjectContext,
+        progressHandler: ((Int, Int) -> Void)?
+    ) throws -> [NSManagedObjectID] {
+        var insertedObjectIDs: [NSManagedObjectID] = []
+        let batchSize = 1000 // Process 1000 at a time
+        let batches = stride(from: 0, to: objects.count, by: batchSize).map {
+            Array(objects[$0..<min($0 + batchSize, objects.count)])
+        }
+
+        for (index, batch) in batches.enumerated() {
+            var batchIndex = 0
+            let batchInsertRequest = NSBatchInsertRequest(
+                entityName: entityName,
+                dictionaryHandler: { dict in
+                    guard batchIndex < batch.count else { return true }
+                    dict.addEntries(from: batch[batchIndex])
+                    batchIndex += 1
+                    return false
+                }
+            )
+
+            batchInsertRequest.resultType = .objectIDs
+
+            let result = try context.execute(batchInsertRequest) as? NSBatchInsertResult
+            if let objectIDs = result?.result as? [NSManagedObjectID] {
+                insertedObjectIDs.append(contentsOf: objectIDs)
+            }
+
+            // Report progress
+            let processed = min((index + 1) * batchSize, objects.count)
+            progressHandler?(processed, objects.count)
+        }
+
+        return insertedObjectIDs
+    }
+
+    /// Perform regular insert for smaller datasets
+    private func performRegularInsert(
+        entityName: String,
+        objects: [[String: Any]],
+        context: NSManagedObjectContext,
+        progressHandler: ((Int, Int) -> Void)?
+    ) throws -> [NSManagedObjectID] {
+        var insertedObjectIDs: [NSManagedObjectID] = []
+
+        for (index, objectDict) in objects.enumerated() {
+            let entity = NSEntityDescription.insertNewObject(forEntityName: entityName, into: context)
+
+            for (key, value) in objectDict {
+                entity.setValue(value, forKey: key)
+            }
+
+            // Save in batches to avoid memory issues
+            if (index + 1) % 100 == 0 {
+                try context.save()
+                context.reset() // Free memory
+            }
+
+            insertedObjectIDs.append(entity.objectID)
+
+            // Report progress every 10%
+            if (index + 1) % max(1, objects.count / 10) == 0 {
+                progressHandler?(index + 1, objects.count)
+            }
+        }
+
+        // Final save
+        if context.hasChanges {
+            try context.save()
+        }
+
+        progressHandler?(objects.count, objects.count)
+
+        return insertedObjectIDs
+    }
 }
 
 // MARK: - Core Data Errors
