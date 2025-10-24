@@ -17,7 +17,7 @@ struct Geohash {
     private static let base32 = Array("0123456789bcdefghjkmnpqrstuvwxyz")
 
     /// Map of geohash neighbor offsets for each direction and odd/even state
-    private static let neighbors: [String: [String]] = [
+    private static let neighbors: [String: [String: String]] = [
         "right": ["even": "bc01fg45238967deuvhjyznpkmstqrwx", "odd": "p0r21436x8zb9dcf5h7kjnmqesgutwvy"],
         "left": ["even": "238967debc01fg45kmstqrwxuvhjyznp", "odd": "14365h7k9dcfesgujnmqp0r2twvyx8zb"],
         "top": ["even": "p0r21436x8zb9dcf5h7kjnmqesgutwvy", "odd": "bc01fg45238967deuvhjyznpkmstqrwx"],
@@ -25,7 +25,7 @@ struct Geohash {
     ]
 
     /// Border characters for each direction and odd/even state
-    private static let borders: [String: [String]] = [
+    private static let borders: [String: [String: String]] = [
         "right": ["even": "bcfguvyz", "odd": "prxz"],
         "left": ["even": "0145hjnp", "odd": "028b"],
         "top": ["even": "prxz", "odd": "bcfguvyz"],

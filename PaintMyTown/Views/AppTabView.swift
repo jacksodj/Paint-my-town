@@ -49,9 +49,11 @@ struct AppTabView: View {
 // MARK: - Preview
 
 #Preview {
-    let coordinator = AppCoordinator()
-    coordinator.start()
-
-    return AppTabView(coordinator: coordinator)
-        .environmentObject(AppState.shared)
+    @MainActor func makePreview() -> some View {
+        let coordinator = AppCoordinator(appState: AppState.shared)
+        coordinator.start()
+        return AppTabView(coordinator: coordinator)
+            .environmentObject(AppState.shared)
+    }
+    return makePreview()
 }

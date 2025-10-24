@@ -77,6 +77,11 @@
 		0B35BA122EAB0737005ECAA3 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B97E2EAB0737005ECAA3 /* MapCoordinator.swift */; };
 		0B35BA132EAB0737005ECAA3 /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9B82EAB0737005ECAA3 /* PermissionManager.swift */; };
 		0B35BA142EAB0737005ECAA3 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9CD2EAB0737005ECAA3 /* ErrorView.swift */; };
+		0B35BA162EAB259F005ECAA3 /* CoverageMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35BA152EAB259F005ECAA3 /* CoverageMapViewModel.swift */; };
+		0B35BA192EAB25BE005ECAA3 /* CoverageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35BA172EAB25BE005ECAA3 /* CoverageService.swift */; };
+		0B35BA1A2EAB25BE005ECAA3 /* CoverageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35BA182EAB25BE005ECAA3 /* CoverageServiceProtocol.swift */; };
+		0B35BA1C2EAB25E7005ECAA3 /* FilterSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35BA1B2EAB25E7005ECAA3 /* FilterSheetView.swift */; };
+		0B35BA1E2EAB26AF005ECAA3 /* Geohash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35BA1D2EAB26AF005ECAA3 /* Geohash.swift */; };
 		A1000001000000000000001 /* PaintMyTownApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000002000000000000001 /* PaintMyTownApp.swift */; };
 		A1000003000000000000001 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000004000000000000001 /* ContentView.swift */; };
 		A1000005000000000000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1000006000000000000001 /* Assets.xcassets */; };
@@ -154,6 +159,11 @@
 		0B35B9CA2EAB0737005ECAA3 /* WorkoutSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSummaryView.swift; sourceTree = "<group>"; };
 		0B35B9CC2EAB0737005ECAA3 /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
 		0B35B9CD2EAB0737005ECAA3 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		0B35BA152EAB259F005ECAA3 /* CoverageMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverageMapViewModel.swift; sourceTree = "<group>"; };
+		0B35BA172EAB25BE005ECAA3 /* CoverageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverageService.swift; sourceTree = "<group>"; };
+		0B35BA182EAB25BE005ECAA3 /* CoverageServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverageServiceProtocol.swift; sourceTree = "<group>"; };
+		0B35BA1B2EAB25E7005ECAA3 /* FilterSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheetView.swift; sourceTree = "<group>"; };
+		0B35BA1D2EAB26AF005ECAA3 /* Geohash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geohash.swift; sourceTree = "<group>"; };
 		A1000002000000000000001 /* PaintMyTownApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintMyTownApp.swift; sourceTree = "<group>"; };
 		A1000004000000000000001 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A1000006000000000000001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -256,6 +266,8 @@
 		0B35B9B22EAB0737005ECAA3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				0B35BA172EAB25BE005ECAA3 /* CoverageService.swift */,
+				0B35BA182EAB25BE005ECAA3 /* CoverageServiceProtocol.swift */,
 				0B35B9AA2EAB0737005ECAA3 /* AudioFeedbackService.swift */,
 				0B35B9AB2EAB0737005ECAA3 /* LocationService.swift */,
 				0B35B9AC2EAB0737005ECAA3 /* LocationServiceProtocol.swift */,
@@ -272,6 +284,7 @@
 		0B35B9BA2EAB0737005ECAA3 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0B35BA1D2EAB26AF005ECAA3 /* Geohash.swift */,
 				0B35B9B32EAB0737005ECAA3 /* DependencyContainer.swift */,
 				0B35B9B42EAB0737005ECAA3 /* Injected.swift */,
 				0B35B9B52EAB0737005ECAA3 /* LocationFilter.swift */,
@@ -288,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				0B35B9BB2EAB0737005ECAA3 /* RecordViewModel.swift */,
+				0B35BA152EAB259F005ECAA3 /* CoverageMapViewModel.swift */,
 			);
 			name = ViewModels;
 			path = PaintMyTown/ViewModels;
@@ -296,6 +310,7 @@
 		0B35B9C12EAB0737005ECAA3 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0B35BA1B2EAB25E7005ECAA3 /* FilterSheetView.swift */,
 				0B35B9BD2EAB0737005ECAA3 /* ActivityTypeSelector.swift */,
 				0B35B9BE2EAB0737005ECAA3 /* MetricCard.swift */,
 				0B35B9BF2EAB0737005ECAA3 /* RouteMapView.swift */,
@@ -470,9 +485,11 @@
 				0B35B9D62EAB0737005ECAA3 /* AppCoordinator.swift in Sources */,
 				0B35B9D72EAB0737005ECAA3 /* WorkoutMetrics.swift in Sources */,
 				0B35B9D82EAB0737005ECAA3 /* PermissionDetailView.swift in Sources */,
+				0B35BA1C2EAB25E7005ECAA3 /* FilterSheetView.swift in Sources */,
 				0B35B9D92EAB0737005ECAA3 /* WorkoutPersistenceService.swift in Sources */,
 				0B35B9DA2EAB0737005ECAA3 /* Logger.swift in Sources */,
 				0B35B9DB2EAB0737005ECAA3 /* RecoveryService.swift in Sources */,
+				0B35BA162EAB259F005ECAA3 /* CoverageMapViewModel.swift in Sources */,
 				0B35B9DC2EAB0737005ECAA3 /* LocationFilter.swift in Sources */,
 				0B35B9DD2EAB0737005ECAA3 /* CoreDataStack.swift in Sources */,
 				0B35B9DE2EAB0737005ECAA3 /* LocationService.swift in Sources */,
@@ -493,6 +510,8 @@
 				0B35B9ED2EAB0737005ECAA3 /* ActiveWorkout.swift in Sources */,
 				0B35B9EE2EAB0737005ECAA3 /* CoreDataModel.swift in Sources */,
 				0B35B9EF2EAB0737005ECAA3 /* WorkoutState.swift in Sources */,
+				0B35BA192EAB25BE005ECAA3 /* CoverageService.swift in Sources */,
+				0B35BA1A2EAB25BE005ECAA3 /* CoverageServiceProtocol.swift in Sources */,
 				0B35B9F02EAB0737005ECAA3 /* PermissionsView.swift in Sources */,
 				0B35B9F12EAB0737005ECAA3 /* HistoryCoordinator.swift in Sources */,
 				0B35B9F22EAB0737005ECAA3 /* WorkoutSummaryView.swift in Sources */,
@@ -503,6 +522,7 @@
 				0B35B9F72EAB0737005ECAA3 /* UserSettings.swift in Sources */,
 				0B35B9F82EAB0737005ECAA3 /* AppTabView.swift in Sources */,
 				0B35B9F92EAB0737005ECAA3 /* PausedInterval.swift in Sources */,
+				0B35BA1E2EAB26AF005ECAA3 /* Geohash.swift in Sources */,
 				0B35B9FA2EAB0737005ECAA3 /* RecordCoordinator.swift in Sources */,
 				0B35B9FB2EAB0737005ECAA3 /* WorkoutControlButton.swift in Sources */,
 				0B35B9FC2EAB0737005ECAA3 /* RecordViewModel.swift in Sources */,

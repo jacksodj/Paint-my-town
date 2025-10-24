@@ -63,7 +63,7 @@ final class WorkoutService: WorkoutServiceProtocol {
     init(
         locationService: LocationServiceProtocol,
         repository: ActivityRepositoryProtocol,
-        appState: AppState = .shared,
+        appState: AppState,
         autoPauseEnabled: Bool = true
     ) {
         self.locationService = locationService
@@ -75,7 +75,8 @@ final class WorkoutService: WorkoutServiceProtocol {
     }
 
     deinit {
-        cleanup()
+        // Note: Cannot call cleanup() here as it's main-actor isolated
+        // Cleanup should be called explicitly before deallocation
     }
 
     // MARK: - ServiceProtocol
@@ -338,7 +339,9 @@ final class WorkoutService: WorkoutServiceProtocol {
             withTimeInterval: backgroundSaveInterval,
             repeats: true
         ) { [weak self] _ in
-            self?.performBackgroundSave()
+            Task { @MainActor in
+                self?.performBackgroundSave()
+            }
         }
     }
 

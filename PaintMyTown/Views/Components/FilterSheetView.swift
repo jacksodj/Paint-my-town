@@ -244,21 +244,6 @@ struct FilterSheetView: View {
     }
 }
 
-// MARK: - Activity Type Extension
-
-private extension ActivityType {
-    var displayName: String {
-        switch self {
-        case .walk:
-            return "Walk"
-        case .run:
-            return "Run"
-        case .bike:
-            return "Bike"
-        }
-    }
-}
-
 // MARK: - Preview
 
 #Preview {

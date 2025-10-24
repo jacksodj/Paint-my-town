@@ -287,11 +287,3 @@ final class CoverageMapViewModel: ObservableObject {
         return count
     }
 }
-
-// MARK: - Tracking State
-
-enum TrackingState {
-    case stopped
-    case active
-    case paused
-}

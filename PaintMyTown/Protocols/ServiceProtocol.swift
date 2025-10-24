@@ -10,6 +10,7 @@ import Combine
 
 /// Base protocol for all service implementations
 /// Services contain business logic and coordinate between repositories and view models
+@MainActor
 protocol ServiceProtocol {
     /// Initialize the service
     /// Called when the service is first created

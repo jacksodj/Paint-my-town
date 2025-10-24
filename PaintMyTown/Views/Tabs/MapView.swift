@@ -128,19 +128,19 @@ private struct CoverageMapContentView: View {
     @ObservedObject var viewModel: CoverageMapViewModel
 
     var body: some View {
-        Map(
-            coordinateRegion: $viewModel.mapRegion,
-            interactionModes: .all,
-            showsUserLocation: true,
-            annotationItems: []
-        ) { _ in
-            // Empty for now - will be replaced with overlay rendering
-        }
-        .mapStyle(viewModel.mapType.mapStyle)
-        .onChange(of: viewModel.mapRegion) { newRegion in
-            Task {
-                await viewModel.updateMapRegion(newRegion)
-            }
+        if #available(iOS 17.0, *) {
+            Map(
+                coordinateRegion: $viewModel.mapRegion,
+                interactionModes: .all,
+                showsUserLocation: true
+            )
+            .mapStyle(viewModel.mapType.mapStyle)
+        } else {
+            Map(
+                coordinateRegion: $viewModel.mapRegion,
+                interactionModes: .all,
+                showsUserLocation: true
+            )
         }
     }
 }
@@ -251,6 +251,7 @@ private struct LoadingOverlay: View {
 
 // MARK: - Extensions
 
+@available(iOS 17.0, *)
 private extension MKMapType {
     var mapStyle: MapStyle {
         switch self {
@@ -282,6 +283,6 @@ private extension CoverageAlgorithmType {
 // MARK: - Preview
 
 #Preview {
-    MapView(coordinator: MapCoordinator(appState: .shared))
+    MapView(coordinator: MapCoordinator(appState: AppState.shared))
         .environmentObject(AppState.shared)
 }

@@ -10,6 +10,7 @@ import SwiftUI
 
 /// Base protocol for all coordinators
 /// Coordinators manage navigation and flow between screens
+@MainActor
 protocol Coordinator: AnyObject {
     /// Child coordinators managed by this coordinator
     var childCoordinators: [Coordinator] { get set }

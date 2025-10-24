@@ -29,7 +29,7 @@ class AppCoordinator: ObservableObject, Coordinator {
 
     // MARK: - Initialization
 
-    init(appState: AppState = .shared) {
+    init(appState: AppState) {
         self.appState = appState
     }
 
@@ -66,7 +66,11 @@ class AppCoordinator: ObservableObject, Coordinator {
         if !container.isRegistered(WorkoutServiceProtocol.self) {
             let locationService = container.resolve(LocationServiceProtocol.self)
             let activityRepo = container.resolve(ActivityRepositoryProtocol.self)
-            let workoutService = WorkoutService(locationService: locationService, repository: activityRepo)
+            let workoutService = WorkoutService(
+                locationService: locationService,
+                repository: activityRepo,
+                appState: appState
+            )
             container.register(WorkoutServiceProtocol.self, instance: workoutService)
         }
 

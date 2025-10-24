@@ -12,6 +12,7 @@ import Combine
 
 /// Protocol defining location tracking service capabilities
 /// Conforms to ServiceProtocol patterns for consistency
+@MainActor
 protocol LocationServiceProtocol: AuthorizableServiceProtocol {
     // MARK: - State Properties
 
