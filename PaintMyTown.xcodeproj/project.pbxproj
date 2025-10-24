@@ -82,6 +82,10 @@
 		0B35BA1A2EAB25BE005ECAA3 /* CoverageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35BA182EAB25BE005ECAA3 /* CoverageServiceProtocol.swift */; };
 		0B35BA1C2EAB25E7005ECAA3 /* FilterSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35BA1B2EAB25E7005ECAA3 /* FilterSheetView.swift */; };
 		0B35BA1E2EAB26AF005ECAA3 /* Geohash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35BA1D2EAB26AF005ECAA3 /* Geohash.swift */; };
+		0B35BA212EAB2889005ECAA3 /* ActivityDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35BA1F2EAB2889005ECAA3 /* ActivityDetailViewModel.swift */; };
+		0B35BA222EAB2889005ECAA3 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35BA202EAB2889005ECAA3 /* HistoryViewModel.swift */; };
+		0B35BA242EAB289D005ECAA3 /* ActivityRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35BA232EAB289D005ECAA3 /* ActivityRowView.swift */; };
+		0B35BA272EAB28AE005ECAA3 /* ActivityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35BA252EAB28AE005ECAA3 /* ActivityDetailView.swift */; };
 		A1000001000000000000001 /* PaintMyTownApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000002000000000000001 /* PaintMyTownApp.swift */; };
 		A1000003000000000000001 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000004000000000000001 /* ContentView.swift */; };
 		A1000005000000000000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1000006000000000000001 /* Assets.xcassets */; };
@@ -164,6 +168,10 @@
 		0B35BA182EAB25BE005ECAA3 /* CoverageServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverageServiceProtocol.swift; sourceTree = "<group>"; };
 		0B35BA1B2EAB25E7005ECAA3 /* FilterSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSheetView.swift; sourceTree = "<group>"; };
 		0B35BA1D2EAB26AF005ECAA3 /* Geohash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geohash.swift; sourceTree = "<group>"; };
+		0B35BA1F2EAB2889005ECAA3 /* ActivityDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewModel.swift; sourceTree = "<group>"; };
+		0B35BA202EAB2889005ECAA3 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		0B35BA232EAB289D005ECAA3 /* ActivityRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRowView.swift; sourceTree = "<group>"; };
+		0B35BA252EAB28AE005ECAA3 /* ActivityDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailView.swift; sourceTree = "<group>"; };
 		A1000002000000000000001 /* PaintMyTownApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintMyTownApp.swift; sourceTree = "<group>"; };
 		A1000004000000000000001 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A1000006000000000000001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -300,6 +308,8 @@
 		0B35B9BC2EAB0737005ECAA3 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				0B35BA1F2EAB2889005ECAA3 /* ActivityDetailViewModel.swift */,
+				0B35BA202EAB2889005ECAA3 /* HistoryViewModel.swift */,
 				0B35B9BB2EAB0737005ECAA3 /* RecordViewModel.swift */,
 				0B35BA152EAB259F005ECAA3 /* CoverageMapViewModel.swift */,
 			);
@@ -310,6 +320,7 @@
 		0B35B9C12EAB0737005ECAA3 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0B35BA232EAB289D005ECAA3 /* ActivityRowView.swift */,
 				0B35BA1B2EAB25E7005ECAA3 /* FilterSheetView.swift */,
 				0B35B9BD2EAB0737005ECAA3 /* ActivityTypeSelector.swift */,
 				0B35B9BE2EAB0737005ECAA3 /* MetricCard.swift */,
@@ -350,6 +361,7 @@
 		0B35B9CE2EAB0737005ECAA3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0B35BA262EAB28AE005ECAA3 /* Activity */,
 				0B35B9C12EAB0737005ECAA3 /* Components */,
 				0B35B9C42EAB0737005ECAA3 /* Onboarding */,
 				0B35B9C92EAB0737005ECAA3 /* Tabs */,
@@ -359,6 +371,14 @@
 			);
 			name = Views;
 			path = PaintMyTown/Views;
+			sourceTree = "<group>";
+		};
+		0B35BA262EAB28AE005ECAA3 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				0B35BA252EAB28AE005ECAA3 /* ActivityDetailView.swift */,
+			);
+			path = Activity;
 			sourceTree = "<group>";
 		};
 		A100000B000000000000001 = {
@@ -501,12 +521,14 @@
 				0B35B9E42EAB0737005ECAA3 /* Split.swift in Sources */,
 				0B35B9E52EAB0737005ECAA3 /* ProfileView.swift in Sources */,
 				0B35B9E62EAB0737005ECAA3 /* ActivityEntity+Mapper.swift in Sources */,
+				0B35BA272EAB28AE005ECAA3 /* ActivityDetailView.swift in Sources */,
 				0B35B9E72EAB0737005ECAA3 /* LocationSampleEntity+CoreDataProperties.swift in Sources */,
 				0B35B9E82EAB0737005ECAA3 /* ActivityEntity+CoreDataClass.swift in Sources */,
 				0B35B9E92EAB0737005ECAA3 /* MapView.swift in Sources */,
 				0B35B9EA2EAB0737005ECAA3 /* AppError.swift in Sources */,
 				0B35B9EB2EAB0737005ECAA3 /* AudioFeedbackService.swift in Sources */,
 				0B35B9EC2EAB0737005ECAA3 /* DistanceUnit.swift in Sources */,
+				0B35BA242EAB289D005ECAA3 /* ActivityRowView.swift in Sources */,
 				0B35B9ED2EAB0737005ECAA3 /* ActiveWorkout.swift in Sources */,
 				0B35B9EE2EAB0737005ECAA3 /* CoreDataModel.swift in Sources */,
 				0B35B9EF2EAB0737005ECAA3 /* WorkoutState.swift in Sources */,
@@ -544,6 +566,8 @@
 				0B35BA0C2EAB0737005ECAA3 /* Activity.swift in Sources */,
 				0B35BA0D2EAB0737005ECAA3 /* RecordView.swift in Sources */,
 				0B35BA0E2EAB0737005ECAA3 /* CoverageTileRepositoryProtocol.swift in Sources */,
+				0B35BA212EAB2889005ECAA3 /* ActivityDetailViewModel.swift in Sources */,
+				0B35BA222EAB2889005ECAA3 /* HistoryViewModel.swift in Sources */,
 				0B35BA0F2EAB0737005ECAA3 /* LocationSmoother.swift in Sources */,
 				0B35BA102EAB0737005ECAA3 /* WorkoutServiceProtocol.swift in Sources */,
 				0B35BA112EAB0737005ECAA3 /* CoverageTileRepository.swift in Sources */,

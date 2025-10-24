@@ -406,13 +406,11 @@ struct ActivityRouteMapView: View {
     }
 
     var body: some View {
-        Map(coordinateRegion: $region, annotationItems: []) { _ in
-            MapPin(coordinate: center)
-        }
-        .overlay(
-            RouteOverlay(coordinates: routeCoordinates)
-        )
-        .disabled(true)
+        Map(coordinateRegion: $region)
+            .overlay(
+                RouteOverlay(coordinates: routeCoordinates)
+            )
+            .disabled(true)
     }
 }
 

@@ -141,21 +141,6 @@ struct ActivityRowView: View {
     }
 }
 
-// MARK: - Extensions
-
-extension ActivityType {
-    var displayName: String {
-        switch self {
-        case .walk:
-            return "Walk"
-        case .run:
-            return "Run"
-        case .bike:
-            return "Bike Ride"
-        }
-    }
-}
-
 // MARK: - Preview
 
 #Preview("Walk Activity") {

@@ -8,6 +8,7 @@
 import Foundation
 import CoreLocation
 import Combine
+import UIKit
 
 /// ViewModel for the Activity Detail view
 @MainActor
