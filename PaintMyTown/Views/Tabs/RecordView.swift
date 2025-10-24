@@ -235,7 +235,6 @@ struct RecordView: View {
 }
 
 #Preview("Active Workout") {
-    let view = RecordView(coordinator: RecordCoordinator(appState: .shared))
-    view.environmentObject(AppState.shared)
-    return view
+    RecordView(coordinator: RecordCoordinator(appState: .shared))
+        .environmentObject(AppState.shared)
 }

@@ -22,7 +22,7 @@ class ActivityRepository: ActivityRepositoryProtocol {
         let context = coreDataStack.newBackgroundContext()
 
         return try await context.perform {
-            let entity = ActivityEntity.fromDomain(activity, context: context)
+            _ = ActivityEntity.fromDomain(activity, context: context)
 
             do {
                 try self.coreDataStack.saveContext(context)

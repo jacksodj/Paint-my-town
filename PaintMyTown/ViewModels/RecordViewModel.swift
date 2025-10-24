@@ -297,7 +297,6 @@ final class RecordViewModel: ObservableObject {
     /// Formatted pace string (min/km or min/mi)
     var formattedPace: String {
         guard let pace = currentPace else { return "--:--" }
-        let distanceUnit = UserDefaultsManager.shared.distanceUnit
         let minutes = Int(pace) / 60
         let seconds = Int(pace) % 60
         return String(format: "%d:%02d", minutes, seconds)

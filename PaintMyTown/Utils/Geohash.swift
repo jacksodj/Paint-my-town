@@ -121,7 +121,6 @@ struct Geohash {
     /// - Parameter geohash: The geohash string to decode
     /// - Returns: BoundingBox containing the area represented by the geohash
     static func decode(_ geohash: String) -> BoundingBox {
-        var bits = 0
         var even = true
 
         var latRange = (-90.0, 90.0)
