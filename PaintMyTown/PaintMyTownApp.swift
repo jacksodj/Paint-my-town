@@ -12,6 +12,7 @@ struct PaintMyTownApp: App {
     init() {
         // Initialize the app coordinator
         let coordinator = AppCoordinator(appState: .shared)
+        coordinator.start() // Register dependencies before views are created
         _appCoordinator = StateObject(wrappedValue: coordinator)
     }
 
@@ -21,9 +22,6 @@ struct PaintMyTownApp: App {
         WindowGroup {
             AppTabView(coordinator: appCoordinator)
                 .environmentObject(appState)
-                .onAppear {
-                    appCoordinator.start()
-                }
                 .onChange(of: appState.currentError) { error in
                     // Handle app-level errors
                     if let error = error {
