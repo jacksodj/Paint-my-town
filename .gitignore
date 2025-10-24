@@ -86,3 +86,7 @@ iOSInjectionProject/
 
 ## OS files
 .DS_Store
+
+## Build logs
+*.log
+build.log
