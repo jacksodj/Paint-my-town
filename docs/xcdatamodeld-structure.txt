@@ -1,0 +1,160 @@
+═══════════════════════════════════════════════════════════════
+PAINT MY TOWN - CORE DATA MODEL STRUCTURE
+File: PaintMyTown.xcdatamodeld
+═══════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────┐
+│ ENTITY: ActivityEntity                                       │
+├─────────────────────────────────────────────────────────────┤
+│ Class: ActivityEntity                                        │
+│ Codegen: Manual/None                                         │
+│                                                              │
+│ ATTRIBUTES:                                                  │
+│   • id                    UUID        Required   []         │
+│   • type                  String      Required   [Indexed]  │
+│   • startDate             Date        Required   [Indexed]  │
+│   • endDate               Date        Required   []         │
+│   • distance              Double      Required   []         │
+│   • duration              Double      Required   []         │
+│   • elevationGain         Double      Required   []         │
+│   • elevationLoss         Double      Required   []         │
+│   • averagePace           Double      Required   []         │
+│   • notes                 String      Optional   []         │
+│                                                              │
+│ RELATIONSHIPS:                                               │
+│   • locations → LocationSampleEntity                         │
+│       Type: To-Many                                          │
+│       Delete Rule: Cascade                                   │
+│       Inverse: activity                                      │
+│                                                              │
+│   • splits → SplitEntity                                     │
+│       Type: To-Many                                          │
+│       Delete Rule: Cascade                                   │
+│       Inverse: activity                                      │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│ ENTITY: LocationSampleEntity                                 │
+├─────────────────────────────────────────────────────────────┤
+│ Class: LocationSampleEntity                                  │
+│ Codegen: Manual/None                                         │
+│                                                              │
+│ ATTRIBUTES:                                                  │
+│   • id                    UUID        Required   []         │
+│   • latitude              Double      Required   []         │
+│   • longitude             Double      Required   []         │
+│   • altitude              Double      Required   []         │
+│   • horizontalAccuracy    Double      Required   []         │
+│   • verticalAccuracy      Double      Required   []         │
+│   • timestamp             Date        Required   []         │
+│   • speed                 Double      Required   []         │
+│                                                              │
+│ RELATIONSHIPS:                                               │
+│   • activity → ActivityEntity                                │
+│       Type: To-One                                           │
+│       Delete Rule: Nullify                                   │
+│       Inverse: locations                                     │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│ ENTITY: SplitEntity                                          │
+├─────────────────────────────────────────────────────────────┤
+│ Class: SplitEntity                                           │
+│ Codegen: Manual/None                                         │
+│                                                              │
+│ ATTRIBUTES:                                                  │
+│   • id                    UUID        Required   []         │
+│   • distance              Double      Required   []         │
+│   • duration              Double      Required   []         │
+│   • pace                  Double      Required   []         │
+│   • elevationGain         Double      Required   []         │
+│                                                              │
+│ RELATIONSHIPS:                                               │
+│   • activity → ActivityEntity                                │
+│       Type: To-One                                           │
+│       Delete Rule: Nullify                                   │
+│       Inverse: splits                                        │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│ ENTITY: CoverageTileEntity                                   │
+├─────────────────────────────────────────────────────────────┤
+│ Class: CoverageTileEntity                                    │
+│ Codegen: Manual/None                                         │
+│                                                              │
+│ ATTRIBUTES:                                                  │
+│   • geohash               String      Required   [Indexed]  │
+│   • latitude              Double      Required   []         │
+│   • longitude             Double      Required   []         │
+│   • visitCount            Integer 32  Required   []         │
+│   • firstVisited          Date        Required   []         │
+│   • lastVisited           Date        Required   []         │
+│                                                              │
+│ RELATIONSHIPS:                                               │
+│   (none)                                                     │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│ ENTITY: UserSettingsEntity                                   │
+├─────────────────────────────────────────────────────────────┤
+│ Class: UserSettingsEntity                                    │
+│ Codegen: Manual/None                                         │
+│                                                              │
+│ ATTRIBUTES:                                                  │
+│   • id                    UUID        Required   []         │
+│   • distanceUnit          String      Required   []         │
+│   • mapType               String      Required   []         │
+│   • coverageAlgorithm     String      Required   []         │
+│   • autoStartWorkout      Boolean     Required   []         │
+│   • autoPauseEnabled      Boolean     Required   []         │
+│   • healthKitEnabled      Boolean     Required   []         │
+│   • defaultActivityType   String      Required   []         │
+│                                                              │
+│ RELATIONSHIPS:                                               │
+│   (none)                                                     │
+└─────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════
+INDEXES
+═══════════════════════════════════════════════════════════════
+
+ActivityEntity:
+  • Composite Index: (startDate, type)
+  • Individual Index: type
+  • Individual Index: startDate
+
+CoverageTileEntity:
+  • Individual Index: geohash
+
+═══════════════════════════════════════════════════════════════
+RELATIONSHIP DIAGRAM
+═══════════════════════════════════════════════════════════════
+
+ActivityEntity
+  ├── locations [1:N] → LocationSampleEntity (Cascade)
+  │                      └── activity [N:1] → ActivityEntity
+  │
+  └── splits [1:N] → SplitEntity (Cascade)
+                     └── activity [N:1] → ActivityEntity
+
+CoverageTileEntity (standalone)
+
+UserSettingsEntity (standalone)
+
+═══════════════════════════════════════════════════════════════
+QUICK REFERENCE: CREATING IN XCODE
+═══════════════════════════════════════════════════════════════
+
+1. File > New > File > Core Data > Data Model
+2. Name: PaintMyTown.xcdatamodeld
+3. For each entity:
+   a. Click "+" to add entity
+   b. Set name, class, codegen (Manual/None)
+   c. Add attributes (click "+" in Attributes section)
+   d. Add relationships (click "+" in Relationships section)
+   e. Set delete rules and inverses
+
+4. Save and build (Cmd+B)
+5. Run tests (Cmd+U)
+
+═══════════════════════════════════════════════════════════════

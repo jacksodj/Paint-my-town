@@ -1,0 +1,56 @@
+PAINT MY TOWN - PHASE 2 FILE MANIFEST
+=====================================
+
+Generated: 2025-10-23
+Total Files Created: 26 files (24 code + 2 documentation)
+Total Lines of Code: 2,607 lines
+
+DOMAIN MODELS (7 files)
+-----------------------
+/home/user/Paint-my-town/PaintMyTown/Models/ActivityType.swift
+/home/user/Paint-my-town/PaintMyTown/Models/DistanceUnit.swift
+/home/user/Paint-my-town/PaintMyTown/Models/LocationSample.swift
+/home/user/Paint-my-town/PaintMyTown/Models/Split.swift
+/home/user/Paint-my-town/PaintMyTown/Models/Activity.swift
+/home/user/Paint-my-town/PaintMyTown/Models/CoverageTile.swift
+/home/user/Paint-my-town/PaintMyTown/Models/UserSettings.swift
+
+CORE DATA ENTITIES (11 files)
+-----------------------------
+/home/user/Paint-my-town/PaintMyTown/CoreData/ActivityEntity+CoreDataClass.swift
+/home/user/Paint-my-town/PaintMyTown/CoreData/ActivityEntity+CoreDataProperties.swift
+/home/user/Paint-my-town/PaintMyTown/CoreData/LocationSampleEntity+CoreDataClass.swift
+/home/user/Paint-my-town/PaintMyTown/CoreData/LocationSampleEntity+CoreDataProperties.swift
+/home/user/Paint-my-town/PaintMyTown/CoreData/SplitEntity+CoreDataClass.swift
+/home/user/Paint-my-town/PaintMyTown/CoreData/SplitEntity+CoreDataProperties.swift
+/home/user/Paint-my-town/PaintMyTown/CoreData/CoverageTileEntity+CoreDataClass.swift
+/home/user/Paint-my-town/PaintMyTown/CoreData/CoverageTileEntity+CoreDataProperties.swift
+/home/user/Paint-my-town/PaintMyTown/CoreData/UserSettingsEntity+CoreDataClass.swift
+/home/user/Paint-my-town/PaintMyTown/CoreData/UserSettingsEntity+CoreDataProperties.swift
+/home/user/Paint-my-town/PaintMyTown/CoreData/ActivityEntity+Mapper.swift
+
+CORE DATA INFRASTRUCTURE (2 files)
+----------------------------------
+/home/user/Paint-my-town/PaintMyTown/CoreData/CoreDataModel.swift
+/home/user/Paint-my-town/PaintMyTown/Repositories/CoreDataStack.swift
+
+REPOSITORY LAYER (4 files)
+--------------------------
+/home/user/Paint-my-town/PaintMyTown/Repositories/ActivityRepositoryProtocol.swift
+/home/user/Paint-my-town/PaintMyTown/Repositories/ActivityRepository.swift
+/home/user/Paint-my-town/PaintMyTown/Repositories/CoverageTileRepositoryProtocol.swift
+/home/user/Paint-my-town/PaintMyTown/Repositories/CoverageTileRepository.swift
+
+TEST SUITE (1 file)
+------------------
+/home/user/Paint-my-town/PaintMyTownTests/RepositoryTests.swift
+
+DOCUMENTATION (2 files)
+-----------------------
+/home/user/Paint-my-town/docs/core-data-setup-guide.md
+/home/user/Paint-my-town/docs/xcdatamodeld-structure.txt
+
+SUMMARY DOCUMENTS (2 files)
+---------------------------
+/home/user/Paint-my-town/IMPLEMENTATION_SUMMARY.md
+/home/user/Paint-my-town/PHASE2_COMPLETION_REPORT.md
