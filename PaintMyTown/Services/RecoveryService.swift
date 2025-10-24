@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import os.log
 
 /// Service responsible for crash recovery of active workouts
 /// Persists workout state to file system and handles recovery on app launch
@@ -14,7 +13,7 @@ class RecoveryService: RecoveryServiceProtocol {
     // MARK: - Properties
 
     private let fileManager = FileManager.default
-    private let logger = Logger(subsystem: "com.paintmytown.app", category: "recovery")
+    private let logger = Logger(category: .general)
 
     /// Directory for storing recovery files
     private var recoveryDirectory: URL {
@@ -65,16 +64,19 @@ class RecoveryService: RecoveryServiceProtocol {
     /// - Parameter workout: The active workout to save
     func saveWorkoutState(_ workout: ActiveWorkout) async throws {
         do {
+            // Convert to Activity for serialization
+            let activity = workout.toActivity()
+
             // Encode workout to JSON
             let encoder = JSONEncoder()
             encoder.dateEncodingStrategy = .iso8601
-            let data = try encoder.encode(workout)
+            let data = try encoder.encode(activity)
 
             // Save to primary file
-            try data.write(to: activeWorkoutFile, options: .atomic)
+            try data.write(to: activeWorkoutFile, options: [.atomic])
 
             // Also save to backup (for redundancy)
-            try? data.write(to: backupWorkoutFile, options: .atomic)
+            try? data.write(to: backupWorkoutFile, options: [.atomic])
 
             logger.info("Saved workout state: \(workout.id) - \(workout.locations.count) locations")
 
@@ -94,8 +96,8 @@ class RecoveryService: RecoveryServiceProtocol {
     // MARK: - Load Workout State
 
     /// Load the active workout state from disk
-    /// - Returns: The recovered active workout, or nil if no recovery data exists
-    func loadWorkoutState() async throws -> ActiveWorkout? {
+    /// - Returns: The recovered activity, or nil if no recovery data exists
+    func loadWorkoutState() async throws -> Activity? {
         var fileToLoad = activeWorkoutFile
 
         // Check if primary file exists
@@ -117,14 +119,14 @@ class RecoveryService: RecoveryServiceProtocol {
             // Decode workout
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
-            let workout = try decoder.decode(ActiveWorkout.self, from: data)
+            let activity = try decoder.decode(Activity.self, from: data)
 
-            logger.info("Loaded workout state: \(workout.id) - \(workout.locations.count) locations")
+            logger.info("Loaded workout state: \(activity.id) - \(activity.locations.count) locations")
 
             // Validate recovery data
-            try validateRecoveryData(workout)
+            try validateRecoveryData(activity)
 
-            return workout
+            return activity
 
         } catch let error as DecodingError {
             logger.error("Failed to decode workout state: \(error)")
@@ -194,7 +196,7 @@ class RecoveryService: RecoveryServiceProtocol {
     // MARK: - Validate Recovery Data
 
     /// Validate that recovery data is not corrupted
-    private func validateRecoveryData(_ workout: ActiveWorkout) throws {
+    private func validateRecoveryData(_ workout: Activity) throws {
         // Check if workout is too old (more than 7 days)
         let maxAge: TimeInterval = 7 * 24 * 60 * 60 // 7 days
         let age = Date().timeIntervalSince(workout.startDate)

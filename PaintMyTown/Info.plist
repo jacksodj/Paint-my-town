@@ -35,7 +35,7 @@
 	<dict/>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
-		<string>armv7</string>
+		<string>arm64</string>
 		<string>location-services</string>
 		<string>gps</string>
 	</array>
@@ -55,6 +55,11 @@
 		<string>location</string>
 		<string>processing</string>
 	</array>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>com.paintmytown.refresh</string>
+		<string>com.paintmytown.cleanup</string>
+	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Paint My Town tracks your location during workouts to map where you've explored.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
@@ -69,5 +74,7 @@
 	<string>Save your Paint My Town workouts to the Health app for a complete fitness record across all your devices.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>Voice announcements provide split times and workout updates while you exercise.</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 </dict>
 </plist>

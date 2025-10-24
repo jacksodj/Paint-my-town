@@ -43,9 +43,9 @@ struct MapView: View {
 
                     // Feature list
                     VStack(alignment: .leading, spacing: 12) {
-                        FeatureRow(icon: "map.fill", text: "Heatmap visualization")
-                        FeatureRow(icon: "square.grid.3x3.fill", text: "Area fill coverage")
-                        FeatureRow(icon: "line.3.horizontal.decrease.circle", text: "Advanced filters")
+                        MapFeatureRow(icon: "map.fill", text: "Heatmap visualization")
+                        MapFeatureRow(icon: "square.grid.3x3.fill", text: "Area fill coverage")
+                        MapFeatureRow(icon: "line.3.horizontal.decrease.circle", text: "Advanced filters")
                     }
                     .padding()
                     .background(Color(.systemBackground))
@@ -84,7 +84,7 @@ struct MapView: View {
 
 // MARK: - Supporting Views
 
-private struct FeatureRow: View {
+private struct MapFeatureRow: View {
     let icon: String
     let text: String
 

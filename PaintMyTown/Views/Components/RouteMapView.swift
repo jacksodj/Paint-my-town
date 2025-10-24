@@ -25,8 +25,8 @@ struct RouteMapView: View {
             // Map
             Map(coordinateRegion: $mapRegion,
                 showsUserLocation: true,
-                annotationItems: annotations) { annotation in
-                MapAnnotation(coordinate: annotation.coordinate) {
+                annotationItems: annotations) { point in
+                MapAnnotation(coordinate: point.coordinate) {
                     Circle()
                         .fill(Color.blue.opacity(0.3))
                         .frame(width: 10, height: 10)
@@ -36,10 +36,10 @@ struct RouteMapView: View {
             .onAppear {
                 updateMapRegion()
             }
-            .onChange(of: route) { _, _ in
+            .onChange(of: route) { _ in
                 updateMapRegion()
             }
-            .onChange(of: userLocation) { _, _ in
+            .onChange(of: userLocation) { _ in
                 updateMapRegion()
             }
 
@@ -63,9 +63,9 @@ struct RouteMapView: View {
 
     // MARK: - Private Methods
 
-    private var annotations: [MapAnnotation] {
+    private var annotations: [RoutePoint] {
         route.enumerated().map { index, coordinate in
-            MapAnnotation(id: index, coordinate: coordinate)
+            RoutePoint(id: index, coordinate: coordinate)
         }
     }
 
@@ -99,13 +99,19 @@ struct RouteMapView: View {
 
 // MARK: - Supporting Types
 
-struct MapAnnotation: Identifiable {
+struct RoutePoint: Identifiable {
     let id: Int
     let coordinate: CLLocationCoordinate2D
 
     init(id: Int, coordinate: CLLocationCoordinate2D) {
         self.id = id
         self.coordinate = coordinate
+    }
+}
+
+extension CLLocationCoordinate2D: Equatable {
+    public static func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+        lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
     }
 }
 

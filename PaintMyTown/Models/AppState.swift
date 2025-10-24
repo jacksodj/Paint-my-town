@@ -22,6 +22,9 @@ final class AppState: ObservableObject {
 
         // Subscribe to workout state changes
         setupObservers()
+
+        // Check initial permission states
+        refreshPermissionStates()
     }
 
     // MARK: - Published Properties

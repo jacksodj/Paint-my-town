@@ -48,8 +48,7 @@ class AppCoordinator: ObservableObject, Coordinator {
 
         // Register repositories if not already registered
         if !container.isRegistered(ActivityRepositoryProtocol.self) {
-            let coreDataStack = CoreDataStack.shared
-            let activityRepo = ActivityRepository(context: coreDataStack.mainContext)
+            let activityRepo = ActivityRepository(coreDataStack: CoreDataStack.shared)
             container.register(ActivityRepositoryProtocol.self, instance: activityRepo)
         }
 
@@ -179,25 +178,6 @@ enum DeepLink {
     case settings
 }
 
-/// Activity types
-enum ActivityType: String, CaseIterable, Codable {
-    case walk
-    case run
-    case bike
-
-    var displayName: String {
-        rawValue.capitalized
-    }
-
-    var icon: String {
-        switch self {
-        case .walk: return "figure.walk"
-        case .run: return "figure.run"
-        case .bike: return "bicycle"
-        }
-    }
-}
-
 /// Coverage filter placeholder (to be implemented in M2)
 struct CoverageFilter: Equatable {
     var dateRange: DateRange?
@@ -211,10 +191,4 @@ struct CoverageFilter: Equatable {
         minDistance: nil,
         minDuration: nil
     )
-}
-
-/// Date range for filtering
-struct DateRange: Equatable {
-    let start: Date
-    let end: Date
 }

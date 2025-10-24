@@ -35,7 +35,7 @@ final class AudioFeedbackService: NSObject {
     }
 
     /// Announce a split completion
-    func announceSplit(_ split: SplitInfo) {
+    func announceSplit(_ split: Split) {
         guard isEnabled else { return }
 
         let distanceUnit = UserDefaultsManager.shared.distanceUnit
@@ -63,7 +63,7 @@ final class AudioFeedbackService: NSObject {
             durationText = "\(totalSeconds) seconds"
         }
 
-        let announcement = "Split \(split.splitNumber). Distance: \(distanceText). Time: \(durationText). Pace: \(paceText)."
+        let announcement = "Split completed. Distance: \(distanceText). Time: \(durationText). Pace: \(paceText)."
 
         speak(announcement)
 
@@ -141,14 +141,14 @@ final class AudioFeedbackService: NSObject {
 
 extension AudioFeedbackService: AVSpeechSynthesizerDelegate {
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
-        Logger.shared.debug("Started speaking", category: .general)
+        Logger.shared.debug("Started speaking")
     }
 
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        Logger.shared.debug("Finished speaking", category: .general)
+        Logger.shared.debug("Finished speaking")
     }
 
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
-        Logger.shared.debug("Cancelled speaking", category: .general)
+        Logger.shared.debug("Cancelled speaking")
     }
 }

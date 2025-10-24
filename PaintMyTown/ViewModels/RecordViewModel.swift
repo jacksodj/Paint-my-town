@@ -91,7 +91,7 @@ final class RecordViewModel: ObservableObject {
             .store(in: &cancellables)
 
         // Subscribe to workout updates
-        workoutService.workoutPublisher
+        workoutService.activeWorkoutPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] workout in
                 self?.handleWorkoutUpdate(workout)
@@ -103,14 +103,6 @@ final class RecordViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] metrics in
                 self?.handleMetricsUpdate(metrics)
-            }
-            .store(in: &cancellables)
-
-        // Subscribe to split updates
-        workoutService.splitPublisher
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] split in
-                self?.handleSplitAnnouncement(split)
             }
             .store(in: &cancellables)
 
@@ -131,32 +123,47 @@ final class RecordViewModel: ObservableObject {
             return
         }
 
-        let workout = workoutService.startWorkout(type: selectedActivityType)
-        Logger.shared.info("Started workout: \(workout.type.rawValue)", category: .ui)
+        do {
+            let workout = try workoutService.startWorkout(type: selectedActivityType)
+            Logger.shared.info("Started workout: \(workout.type.rawValue)", category: .ui)
 
-        // Enable screen lock prevention
-        setScreenLockDisabled(true)
+            // Enable screen lock prevention
+            setScreenLockDisabled(true)
 
-        // Provide haptic feedback
-        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+            // Provide haptic feedback
+            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+        } catch {
+            errorMessage = "Failed to start workout: \(error.localizedDescription)"
+            Logger.shared.error("Failed to start workout", error: error, category: .ui)
+        }
     }
 
     /// Pause the current workout
     func pauseWorkout() {
-        workoutService.pauseWorkout()
-        Logger.shared.info("Paused workout", category: .ui)
+        do {
+            try workoutService.pauseWorkout()
+            Logger.shared.info("Paused workout", category: .ui)
 
-        // Provide haptic feedback
-        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+            // Provide haptic feedback
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        } catch {
+            errorMessage = "Failed to pause workout: \(error.localizedDescription)"
+            Logger.shared.error("Failed to pause workout", error: error, category: .ui)
+        }
     }
 
     /// Resume the paused workout
     func resumeWorkout() {
-        workoutService.resumeWorkout()
-        Logger.shared.info("Resumed workout", category: .ui)
+        do {
+            try workoutService.resumeWorkout()
+            Logger.shared.info("Resumed workout", category: .ui)
 
-        // Provide haptic feedback
-        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+            // Provide haptic feedback
+            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+        } catch {
+            errorMessage = "Failed to resume workout: \(error.localizedDescription)"
+            Logger.shared.error("Failed to resume workout", error: error, category: .ui)
+        }
     }
 
     /// Request to stop the workout (shows confirmation)
@@ -189,13 +196,18 @@ final class RecordViewModel: ObservableObject {
 
     /// Cancel the workout without saving
     func cancelWorkout() {
-        workoutService.cancelWorkout()
-        resetState()
+        do {
+            try workoutService.cancelWorkout()
+            resetState()
 
-        Logger.shared.info("Cancelled workout", category: .ui)
+            Logger.shared.info("Cancelled workout", category: .ui)
 
-        // Provide haptic feedback
-        UINotificationFeedbackGenerator().notificationOccurred(.warning)
+            // Provide haptic feedback
+            UINotificationFeedbackGenerator().notificationOccurred(.warning)
+        } catch {
+            errorMessage = "Failed to cancel workout: \(error.localizedDescription)"
+            Logger.shared.error("Failed to cancel workout", error: error, category: .ui)
+        }
     }
 
     /// Dismiss the workout summary
@@ -225,15 +237,15 @@ final class RecordViewModel: ObservableObject {
 
     private func handleMetricsUpdate(_ metrics: WorkoutMetrics) {
         currentDistance = metrics.distance
-        currentDuration = metrics.duration
-        currentPace = metrics.pace
-        currentSpeed = metrics.speed
+        currentDuration = metrics.movingTime
+        currentPace = metrics.currentPace ?? metrics.averagePace
+        currentSpeed = metrics.currentSpeed ?? metrics.averageSpeed
         currentElevationGain = metrics.elevationGain
     }
 
-    private func handleSplitAnnouncement(_ split: SplitInfo) {
+    private func handleSplitAnnouncement(_ split: Split) {
         // This will be handled by the audio feedback component
-        Logger.shared.info("Split \(split.splitNumber) completed", category: .workout)
+        Logger.shared.info("Split completed", category: .workout)
     }
 
     private func resetState() {

@@ -75,6 +75,13 @@ class ActiveWorkout: Identifiable, ObservableObject {
         stopTimer()
     }
 
+    // MARK: - Computed Properties
+
+    /// Whether the workout is currently paused
+    var isPaused: Bool {
+        state == .paused
+    }
+
     // MARK: - Public Methods
 
     /// Add a new location sample and update metrics
@@ -158,7 +165,7 @@ class ActiveWorkout: Identifiable, ObservableObject {
     }
 
     /// Convert to completed Activity
-    func toActivity() -> Activity {
+    func toActivity(notes: String? = nil) -> Activity {
         let endDate = Date()
         let totalDuration = endDate.timeIntervalSince(startDate)
 
@@ -172,7 +179,7 @@ class ActiveWorkout: Identifiable, ObservableObject {
             elevationGain: metrics.elevationGain,
             elevationLoss: metrics.elevationLoss,
             averagePace: metrics.averagePace,
-            notes: nil,
+            notes: notes,
             locations: locations,
             splits: splits
         )

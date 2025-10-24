@@ -28,7 +28,7 @@ protocol RecoveryServiceProtocol {
     func saveWorkoutState(_ workout: ActiveWorkout) async throws
 
     /// Load the active workout state from disk
-    func loadWorkoutState() async throws -> ActiveWorkout?
+    func loadWorkoutState() async throws -> Activity?
 
     /// Clear the saved workout state
     func clearWorkoutState() async
