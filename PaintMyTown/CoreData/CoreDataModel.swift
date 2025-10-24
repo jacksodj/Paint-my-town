@@ -113,8 +113,8 @@ class CoreDataModel {
         // Attributes
         entity.properties = [
             createAttribute(name: "id", type: .UUIDAttributeType, isOptional: false),
-            createAttribute(name: "type", type: .stringAttributeType, isOptional: false, isIndexed: true),
-            createAttribute(name: "startDate", type: .dateAttributeType, isOptional: false, isIndexed: true),
+            createAttribute(name: "type", type: .stringAttributeType, isOptional: false),
+            createAttribute(name: "startDate", type: .dateAttributeType, isOptional: false),
             createAttribute(name: "endDate", type: .dateAttributeType, isOptional: false),
             createAttribute(name: "distance", type: .doubleAttributeType, isOptional: false),
             createAttribute(name: "duration", type: .doubleAttributeType, isOptional: false),
@@ -123,6 +123,17 @@ class CoreDataModel {
             createAttribute(name: "averagePace", type: .doubleAttributeType, isOptional: false),
             createAttribute(name: "notes", type: .stringAttributeType, isOptional: true)
         ]
+
+        // Add indexes (modern API for iOS 11+)
+        if #available(iOS 11.0, *) {
+            let typeIndex = NSFetchIndexDescription(name: "typeIndex", elements: [
+                NSFetchIndexElementDescription(property: entity.propertiesByName["type"]!, collationType: .binary)
+            ])
+            let startDateIndex = NSFetchIndexDescription(name: "startDateIndex", elements: [
+                NSFetchIndexElementDescription(property: entity.propertiesByName["startDate"]!, collationType: .binary)
+            ])
+            entity.indexes = [typeIndex, startDateIndex]
+        }
 
         return entity
     }
@@ -168,13 +179,21 @@ class CoreDataModel {
         entity.managedObjectClassName = "CoverageTileEntity"
 
         entity.properties = [
-            createAttribute(name: "geohash", type: .stringAttributeType, isOptional: false, isIndexed: true),
+            createAttribute(name: "geohash", type: .stringAttributeType, isOptional: false),
             createAttribute(name: "latitude", type: .doubleAttributeType, isOptional: false),
             createAttribute(name: "longitude", type: .doubleAttributeType, isOptional: false),
             createAttribute(name: "visitCount", type: .integer32AttributeType, isOptional: false),
             createAttribute(name: "firstVisited", type: .dateAttributeType, isOptional: false),
             createAttribute(name: "lastVisited", type: .dateAttributeType, isOptional: false)
         ]
+
+        // Add indexes (modern API for iOS 11+)
+        if #available(iOS 11.0, *) {
+            let geohashIndex = NSFetchIndexDescription(name: "geohashIndex", elements: [
+                NSFetchIndexElementDescription(property: entity.propertiesByName["geohash"]!, collationType: .binary)
+            ])
+            entity.indexes = [geohashIndex]
+        }
 
         return entity
     }
@@ -203,14 +222,12 @@ class CoreDataModel {
     private static func createAttribute(
         name: String,
         type: NSAttributeType,
-        isOptional: Bool,
-        isIndexed: Bool = false
+        isOptional: Bool
     ) -> NSAttributeDescription {
         let attribute = NSAttributeDescription()
         attribute.name = name
         attribute.attributeType = type
         attribute.isOptional = isOptional
-        attribute.isIndexed = isIndexed
         return attribute
     }
 

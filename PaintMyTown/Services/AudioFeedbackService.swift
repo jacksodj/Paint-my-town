@@ -10,10 +10,10 @@ import AVFoundation
 import Combine
 
 /// Service for providing audio feedback during workouts (split announcements)
-final class AudioFeedbackService: NSObject {
+final class AudioFeedbackService: NSObject, @unchecked Sendable {
     // MARK: - Properties
 
-    private let synthesizer = AVSpeechSynthesizer()
+    private nonisolated(unsafe) let synthesizer = AVSpeechSynthesizer()
     private var isEnabled: Bool = true
     private var cancellables = Set<AnyCancellable>()
 

@@ -44,6 +44,7 @@ protocol LifecycleServiceProtocol: ServiceProtocol {
 }
 
 /// Protocol for services that require authorization
+@MainActor
 protocol AuthorizableServiceProtocol: ServiceProtocol {
     /// Authorization state
     var isAuthorized: Bool { get }

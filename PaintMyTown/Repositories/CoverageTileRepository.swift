@@ -10,7 +10,7 @@ import CoreData
 import MapKit
 
 /// Core Data implementation of CoverageTileRepositoryProtocol
-class CoverageTileRepository: CoverageTileRepositoryProtocol {
+class CoverageTileRepository: CoverageTileRepositoryProtocol, @unchecked Sendable {
     private let coreDataStack: CoreDataStack
 
     init(coreDataStack: CoreDataStack = .shared) {

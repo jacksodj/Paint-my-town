@@ -11,7 +11,7 @@ import UIKit
 
 /// Service responsible for persisting workout data to Core Data
 /// Handles batch inserts, error recovery, and background task management
-class WorkoutPersistenceService: WorkoutPersistenceServiceProtocol {
+class WorkoutPersistenceService: WorkoutPersistenceServiceProtocol, @unchecked Sendable {
     // MARK: - Properties
 
     private let coreDataStack: CoreDataStack

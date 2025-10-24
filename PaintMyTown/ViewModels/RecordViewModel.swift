@@ -175,7 +175,7 @@ final class RecordViewModel: ObservableObject {
     func stopWorkout() {
         Task {
             do {
-                let activity = try await workoutService.endWorkout()
+                let activity = try workoutService.endWorkout()
                 completedWorkout = activity
                 showWorkoutSummary = true
                 resetState()

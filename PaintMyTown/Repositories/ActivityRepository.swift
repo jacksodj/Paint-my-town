@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 /// Core Data implementation of ActivityRepositoryProtocol
-class ActivityRepository: ActivityRepositoryProtocol {
+class ActivityRepository: ActivityRepositoryProtocol, @unchecked Sendable {
     private let coreDataStack: CoreDataStack
 
     init(coreDataStack: CoreDataStack = .shared) {
