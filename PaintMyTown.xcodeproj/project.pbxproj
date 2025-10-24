@@ -7,6 +7,76 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B35B9CF2EAB0737005ECAA3 /* SplitCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9AE2EAB0737005ECAA3 /* SplitCalculator.swift */; };
+		0B35B9D02EAB0737005ECAA3 /* RouteMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9BF2EAB0737005ECAA3 /* RouteMapView.swift */; };
+		0B35B9D12EAB0737005ECAA3 /* ActivityEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9832EAB0737005ECAA3 /* ActivityEntity+CoreDataProperties.swift */; };
+		0B35B9D22EAB0737005ECAA3 /* RepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9A02EAB0737005ECAA3 /* RepositoryProtocol.swift */; };
+		0B35B9D32EAB0737005ECAA3 /* SplitEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B98B2EAB0737005ECAA3 /* SplitEntity+CoreDataProperties.swift */; };
+		0B35B9D42EAB0737005ECAA3 /* LocationSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9962EAB0737005ECAA3 /* LocationSample.swift */; };
+		0B35B9D52EAB0737005ECAA3 /* UserSettingsEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B98D2EAB0737005ECAA3 /* UserSettingsEntity+CoreDataProperties.swift */; };
+		0B35B9D62EAB0737005ECAA3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B97C2EAB0737005ECAA3 /* AppCoordinator.swift */; };
+		0B35B9D72EAB0737005ECAA3 /* WorkoutMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B99B2EAB0737005ECAA3 /* WorkoutMetrics.swift */; };
+		0B35B9D82EAB0737005ECAA3 /* PermissionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9C22EAB0737005ECAA3 /* PermissionDetailView.swift */; };
+		0B35B9D92EAB0737005ECAA3 /* WorkoutPersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9AF2EAB0737005ECAA3 /* WorkoutPersistenceService.swift */; };
+		0B35B9DA2EAB0737005ECAA3 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9B72EAB0737005ECAA3 /* Logger.swift */; };
+		0B35B9DB2EAB0737005ECAA3 /* RecoveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9AD2EAB0737005ECAA3 /* RecoveryService.swift */; };
+		0B35B9DC2EAB0737005ECAA3 /* LocationFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9B52EAB0737005ECAA3 /* LocationFilter.swift */; };
+		0B35B9DD2EAB0737005ECAA3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9A62EAB0737005ECAA3 /* CoreDataStack.swift */; };
+		0B35B9DE2EAB0737005ECAA3 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9AB2EAB0737005ECAA3 /* LocationService.swift */; };
+		0B35B9DF2EAB0737005ECAA3 /* CoverageTileEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9872EAB0737005ECAA3 /* CoverageTileEntity+CoreDataProperties.swift */; };
+		0B35B9E02EAB0737005ECAA3 /* SplitEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B98A2EAB0737005ECAA3 /* SplitEntity+CoreDataClass.swift */; };
+		0B35B9E12EAB0737005ECAA3 /* WorkoutPersistenceServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9A22EAB0737005ECAA3 /* WorkoutPersistenceServiceProtocol.swift */; };
+		0B35B9E22EAB0737005ECAA3 /* ActivityRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9A52EAB0737005ECAA3 /* ActivityRepositoryProtocol.swift */; };
+		0B35B9E32EAB0737005ECAA3 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B97F2EAB0737005ECAA3 /* ProfileCoordinator.swift */; };
+		0B35B9E42EAB0737005ECAA3 /* Split.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9982EAB0737005ECAA3 /* Split.swift */; };
+		0B35B9E52EAB0737005ECAA3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9C72EAB0737005ECAA3 /* ProfileView.swift */; };
+		0B35B9E62EAB0737005ECAA3 /* ActivityEntity+Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9842EAB0737005ECAA3 /* ActivityEntity+Mapper.swift */; };
+		0B35B9E72EAB0737005ECAA3 /* LocationSampleEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9892EAB0737005ECAA3 /* LocationSampleEntity+CoreDataProperties.swift */; };
+		0B35B9E82EAB0737005ECAA3 /* ActivityEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9822EAB0737005ECAA3 /* ActivityEntity+CoreDataClass.swift */; };
+		0B35B9E92EAB0737005ECAA3 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9C62EAB0737005ECAA3 /* MapView.swift */; };
+		0B35B9EA2EAB0737005ECAA3 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9922EAB0737005ECAA3 /* AppError.swift */; };
+		0B35B9EB2EAB0737005ECAA3 /* AudioFeedbackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9AA2EAB0737005ECAA3 /* AudioFeedbackService.swift */; };
+		0B35B9EC2EAB0737005ECAA3 /* DistanceUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9952EAB0737005ECAA3 /* DistanceUnit.swift */; };
+		0B35B9ED2EAB0737005ECAA3 /* ActiveWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B98F2EAB0737005ECAA3 /* ActiveWorkout.swift */; };
+		0B35B9EE2EAB0737005ECAA3 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9852EAB0737005ECAA3 /* CoreDataModel.swift */; };
+		0B35B9EF2EAB0737005ECAA3 /* WorkoutState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B99D2EAB0737005ECAA3 /* WorkoutState.swift */; };
+		0B35B9F02EAB0737005ECAA3 /* PermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9C32EAB0737005ECAA3 /* PermissionsView.swift */; };
+		0B35B9F12EAB0737005ECAA3 /* HistoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B97D2EAB0737005ECAA3 /* HistoryCoordinator.swift */; };
+		0B35B9F22EAB0737005ECAA3 /* WorkoutSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9CA2EAB0737005ECAA3 /* WorkoutSummaryView.swift */; };
+		0B35B9F32EAB0737005ECAA3 /* LocationSampleEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9882EAB0737005ECAA3 /* LocationSampleEntity+CoreDataClass.swift */; };
+		0B35B9F42EAB0737005ECAA3 /* Injected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9B42EAB0737005ECAA3 /* Injected.swift */; };
+		0B35B9F52EAB0737005ECAA3 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9932EAB0737005ECAA3 /* AppState.swift */; };
+		0B35B9F62EAB0737005ECAA3 /* ActivityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9A42EAB0737005ECAA3 /* ActivityRepository.swift */; };
+		0B35B9F72EAB0737005ECAA3 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B99A2EAB0737005ECAA3 /* UserSettings.swift */; };
+		0B35B9F82EAB0737005ECAA3 /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9CC2EAB0737005ECAA3 /* AppTabView.swift */; };
+		0B35B9F92EAB0737005ECAA3 /* PausedInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9972EAB0737005ECAA3 /* PausedInterval.swift */; };
+		0B35B9FA2EAB0737005ECAA3 /* RecordCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9802EAB0737005ECAA3 /* RecordCoordinator.swift */; };
+		0B35B9FB2EAB0737005ECAA3 /* WorkoutControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9C02EAB0737005ECAA3 /* WorkoutControlButton.swift */; };
+		0B35B9FC2EAB0737005ECAA3 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9BB2EAB0737005ECAA3 /* RecordViewModel.swift */; };
+		0B35B9FD2EAB0737005ECAA3 /* CoverageTileEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9862EAB0737005ECAA3 /* CoverageTileEntity+CoreDataClass.swift */; };
+		0B35B9FE2EAB0737005ECAA3 /* WorkoutPersistenceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B99C2EAB0737005ECAA3 /* WorkoutPersistenceError.swift */; };
+		0B35B9FF2EAB0737005ECAA3 /* LocationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9AC2EAB0737005ECAA3 /* LocationServiceProtocol.swift */; };
+		0B35BA002EAB0737005ECAA3 /* TrackingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9992EAB0737005ECAA3 /* TrackingState.swift */; };
+		0B35BA012EAB0737005ECAA3 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9B32EAB0737005ECAA3 /* DependencyContainer.swift */; };
+		0B35BA022EAB0737005ECAA3 /* WorkoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9B02EAB0737005ECAA3 /* WorkoutService.swift */; };
+		0B35BA032EAB0737005ECAA3 /* ServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9A12EAB0737005ECAA3 /* ServiceProtocol.swift */; };
+		0B35BA042EAB0737005ECAA3 /* CoverageTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9942EAB0737005ECAA3 /* CoverageTile.swift */; };
+		0B35BA052EAB0737005ECAA3 /* ActivityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9912EAB0737005ECAA3 /* ActivityType.swift */; };
+		0B35BA062EAB0737005ECAA3 /* UserSettingsEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B98C2EAB0737005ECAA3 /* UserSettingsEntity+CoreDataClass.swift */; };
+		0B35BA072EAB0737005ECAA3 /* MetricCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9BE2EAB0737005ECAA3 /* MetricCard.swift */; };
+		0B35BA082EAB0737005ECAA3 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9C52EAB0737005ECAA3 /* HistoryView.swift */; };
+		0B35BA092EAB0737005ECAA3 /* ActivityTypeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9BD2EAB0737005ECAA3 /* ActivityTypeSelector.swift */; };
+		0B35BA0A2EAB0737005ECAA3 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9B92EAB0737005ECAA3 /* UserDefaultsManager.swift */; };
+		0B35BA0B2EAB0737005ECAA3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B99F2EAB0737005ECAA3 /* Coordinator.swift */; };
+		0B35BA0C2EAB0737005ECAA3 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9902EAB0737005ECAA3 /* Activity.swift */; };
+		0B35BA0D2EAB0737005ECAA3 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9C82EAB0737005ECAA3 /* RecordView.swift */; };
+		0B35BA0E2EAB0737005ECAA3 /* CoverageTileRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9A82EAB0737005ECAA3 /* CoverageTileRepositoryProtocol.swift */; };
+		0B35BA0F2EAB0737005ECAA3 /* LocationSmoother.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9B62EAB0737005ECAA3 /* LocationSmoother.swift */; };
+		0B35BA102EAB0737005ECAA3 /* WorkoutServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9B12EAB0737005ECAA3 /* WorkoutServiceProtocol.swift */; };
+		0B35BA112EAB0737005ECAA3 /* CoverageTileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9A72EAB0737005ECAA3 /* CoverageTileRepository.swift */; };
+		0B35BA122EAB0737005ECAA3 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B97E2EAB0737005ECAA3 /* MapCoordinator.swift */; };
+		0B35BA132EAB0737005ECAA3 /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9B82EAB0737005ECAA3 /* PermissionManager.swift */; };
+		0B35BA142EAB0737005ECAA3 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B35B9CD2EAB0737005ECAA3 /* ErrorView.swift */; };
 		A1000001000000000000001 /* PaintMyTownApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000002000000000000001 /* PaintMyTownApp.swift */; };
 		A1000003000000000000001 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000004000000000000001 /* ContentView.swift */; };
 		A1000005000000000000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1000006000000000000001 /* Assets.xcassets */; };
@@ -14,6 +84,76 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B35B97C2EAB0737005ECAA3 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		0B35B97D2EAB0737005ECAA3 /* HistoryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCoordinator.swift; sourceTree = "<group>"; };
+		0B35B97E2EAB0737005ECAA3 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
+		0B35B97F2EAB0737005ECAA3 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		0B35B9802EAB0737005ECAA3 /* RecordCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCoordinator.swift; sourceTree = "<group>"; };
+		0B35B9822EAB0737005ECAA3 /* ActivityEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0B35B9832EAB0737005ECAA3 /* ActivityEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0B35B9842EAB0737005ECAA3 /* ActivityEntity+Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActivityEntity+Mapper.swift"; sourceTree = "<group>"; };
+		0B35B9852EAB0737005ECAA3 /* CoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
+		0B35B9862EAB0737005ECAA3 /* CoverageTileEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoverageTileEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0B35B9872EAB0737005ECAA3 /* CoverageTileEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoverageTileEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0B35B9882EAB0737005ECAA3 /* LocationSampleEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationSampleEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0B35B9892EAB0737005ECAA3 /* LocationSampleEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationSampleEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0B35B98A2EAB0737005ECAA3 /* SplitEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplitEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0B35B98B2EAB0737005ECAA3 /* SplitEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplitEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0B35B98C2EAB0737005ECAA3 /* UserSettingsEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserSettingsEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0B35B98D2EAB0737005ECAA3 /* UserSettingsEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserSettingsEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0B35B98F2EAB0737005ECAA3 /* ActiveWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveWorkout.swift; sourceTree = "<group>"; };
+		0B35B9902EAB0737005ECAA3 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		0B35B9912EAB0737005ECAA3 /* ActivityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityType.swift; sourceTree = "<group>"; };
+		0B35B9922EAB0737005ECAA3 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		0B35B9932EAB0737005ECAA3 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		0B35B9942EAB0737005ECAA3 /* CoverageTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverageTile.swift; sourceTree = "<group>"; };
+		0B35B9952EAB0737005ECAA3 /* DistanceUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceUnit.swift; sourceTree = "<group>"; };
+		0B35B9962EAB0737005ECAA3 /* LocationSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSample.swift; sourceTree = "<group>"; };
+		0B35B9972EAB0737005ECAA3 /* PausedInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausedInterval.swift; sourceTree = "<group>"; };
+		0B35B9982EAB0737005ECAA3 /* Split.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Split.swift; sourceTree = "<group>"; };
+		0B35B9992EAB0737005ECAA3 /* TrackingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingState.swift; sourceTree = "<group>"; };
+		0B35B99A2EAB0737005ECAA3 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		0B35B99B2EAB0737005ECAA3 /* WorkoutMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutMetrics.swift; sourceTree = "<group>"; };
+		0B35B99C2EAB0737005ECAA3 /* WorkoutPersistenceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPersistenceError.swift; sourceTree = "<group>"; };
+		0B35B99D2EAB0737005ECAA3 /* WorkoutState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutState.swift; sourceTree = "<group>"; };
+		0B35B99F2EAB0737005ECAA3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		0B35B9A02EAB0737005ECAA3 /* RepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProtocol.swift; sourceTree = "<group>"; };
+		0B35B9A12EAB0737005ECAA3 /* ServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocol.swift; sourceTree = "<group>"; };
+		0B35B9A22EAB0737005ECAA3 /* WorkoutPersistenceServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPersistenceServiceProtocol.swift; sourceTree = "<group>"; };
+		0B35B9A42EAB0737005ECAA3 /* ActivityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRepository.swift; sourceTree = "<group>"; };
+		0B35B9A52EAB0737005ECAA3 /* ActivityRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRepositoryProtocol.swift; sourceTree = "<group>"; };
+		0B35B9A62EAB0737005ECAA3 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		0B35B9A72EAB0737005ECAA3 /* CoverageTileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverageTileRepository.swift; sourceTree = "<group>"; };
+		0B35B9A82EAB0737005ECAA3 /* CoverageTileRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverageTileRepositoryProtocol.swift; sourceTree = "<group>"; };
+		0B35B9AA2EAB0737005ECAA3 /* AudioFeedbackService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFeedbackService.swift; sourceTree = "<group>"; };
+		0B35B9AB2EAB0737005ECAA3 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		0B35B9AC2EAB0737005ECAA3 /* LocationServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceProtocol.swift; sourceTree = "<group>"; };
+		0B35B9AD2EAB0737005ECAA3 /* RecoveryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryService.swift; sourceTree = "<group>"; };
+		0B35B9AE2EAB0737005ECAA3 /* SplitCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitCalculator.swift; sourceTree = "<group>"; };
+		0B35B9AF2EAB0737005ECAA3 /* WorkoutPersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPersistenceService.swift; sourceTree = "<group>"; };
+		0B35B9B02EAB0737005ECAA3 /* WorkoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutService.swift; sourceTree = "<group>"; };
+		0B35B9B12EAB0737005ECAA3 /* WorkoutServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutServiceProtocol.swift; sourceTree = "<group>"; };
+		0B35B9B32EAB0737005ECAA3 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		0B35B9B42EAB0737005ECAA3 /* Injected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injected.swift; sourceTree = "<group>"; };
+		0B35B9B52EAB0737005ECAA3 /* LocationFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFilter.swift; sourceTree = "<group>"; };
+		0B35B9B62EAB0737005ECAA3 /* LocationSmoother.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSmoother.swift; sourceTree = "<group>"; };
+		0B35B9B72EAB0737005ECAA3 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		0B35B9B82EAB0737005ECAA3 /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
+		0B35B9B92EAB0737005ECAA3 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		0B35B9BB2EAB0737005ECAA3 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
+		0B35B9BD2EAB0737005ECAA3 /* ActivityTypeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTypeSelector.swift; sourceTree = "<group>"; };
+		0B35B9BE2EAB0737005ECAA3 /* MetricCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricCard.swift; sourceTree = "<group>"; };
+		0B35B9BF2EAB0737005ECAA3 /* RouteMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMapView.swift; sourceTree = "<group>"; };
+		0B35B9C02EAB0737005ECAA3 /* WorkoutControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutControlButton.swift; sourceTree = "<group>"; };
+		0B35B9C22EAB0737005ECAA3 /* PermissionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionDetailView.swift; sourceTree = "<group>"; };
+		0B35B9C32EAB0737005ECAA3 /* PermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsView.swift; sourceTree = "<group>"; };
+		0B35B9C52EAB0737005ECAA3 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		0B35B9C62EAB0737005ECAA3 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		0B35B9C72EAB0737005ECAA3 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		0B35B9C82EAB0737005ECAA3 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		0B35B9CA2EAB0737005ECAA3 /* WorkoutSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSummaryView.swift; sourceTree = "<group>"; };
+		0B35B9CC2EAB0737005ECAA3 /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
+		0B35B9CD2EAB0737005ECAA3 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		A1000002000000000000001 /* PaintMyTownApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintMyTownApp.swift; sourceTree = "<group>"; };
 		A1000004000000000000001 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A1000006000000000000001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -32,11 +172,194 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B35B9812EAB0737005ECAA3 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				0B35B97C2EAB0737005ECAA3 /* AppCoordinator.swift */,
+				0B35B97D2EAB0737005ECAA3 /* HistoryCoordinator.swift */,
+				0B35B97E2EAB0737005ECAA3 /* MapCoordinator.swift */,
+				0B35B97F2EAB0737005ECAA3 /* ProfileCoordinator.swift */,
+				0B35B9802EAB0737005ECAA3 /* RecordCoordinator.swift */,
+			);
+			name = Coordinators;
+			path = PaintMyTown/Coordinators;
+			sourceTree = "<group>";
+		};
+		0B35B98E2EAB0737005ECAA3 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				0B35B9822EAB0737005ECAA3 /* ActivityEntity+CoreDataClass.swift */,
+				0B35B9832EAB0737005ECAA3 /* ActivityEntity+CoreDataProperties.swift */,
+				0B35B9842EAB0737005ECAA3 /* ActivityEntity+Mapper.swift */,
+				0B35B9852EAB0737005ECAA3 /* CoreDataModel.swift */,
+				0B35B9862EAB0737005ECAA3 /* CoverageTileEntity+CoreDataClass.swift */,
+				0B35B9872EAB0737005ECAA3 /* CoverageTileEntity+CoreDataProperties.swift */,
+				0B35B9882EAB0737005ECAA3 /* LocationSampleEntity+CoreDataClass.swift */,
+				0B35B9892EAB0737005ECAA3 /* LocationSampleEntity+CoreDataProperties.swift */,
+				0B35B98A2EAB0737005ECAA3 /* SplitEntity+CoreDataClass.swift */,
+				0B35B98B2EAB0737005ECAA3 /* SplitEntity+CoreDataProperties.swift */,
+				0B35B98C2EAB0737005ECAA3 /* UserSettingsEntity+CoreDataClass.swift */,
+				0B35B98D2EAB0737005ECAA3 /* UserSettingsEntity+CoreDataProperties.swift */,
+			);
+			name = CoreData;
+			path = PaintMyTown/CoreData;
+			sourceTree = "<group>";
+		};
+		0B35B99E2EAB0737005ECAA3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0B35B98F2EAB0737005ECAA3 /* ActiveWorkout.swift */,
+				0B35B9902EAB0737005ECAA3 /* Activity.swift */,
+				0B35B9912EAB0737005ECAA3 /* ActivityType.swift */,
+				0B35B9922EAB0737005ECAA3 /* AppError.swift */,
+				0B35B9932EAB0737005ECAA3 /* AppState.swift */,
+				0B35B9942EAB0737005ECAA3 /* CoverageTile.swift */,
+				0B35B9952EAB0737005ECAA3 /* DistanceUnit.swift */,
+				0B35B9962EAB0737005ECAA3 /* LocationSample.swift */,
+				0B35B9972EAB0737005ECAA3 /* PausedInterval.swift */,
+				0B35B9982EAB0737005ECAA3 /* Split.swift */,
+				0B35B9992EAB0737005ECAA3 /* TrackingState.swift */,
+				0B35B99A2EAB0737005ECAA3 /* UserSettings.swift */,
+				0B35B99B2EAB0737005ECAA3 /* WorkoutMetrics.swift */,
+				0B35B99C2EAB0737005ECAA3 /* WorkoutPersistenceError.swift */,
+				0B35B99D2EAB0737005ECAA3 /* WorkoutState.swift */,
+			);
+			name = Models;
+			path = PaintMyTown/Models;
+			sourceTree = "<group>";
+		};
+		0B35B9A32EAB0737005ECAA3 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				0B35B99F2EAB0737005ECAA3 /* Coordinator.swift */,
+				0B35B9A02EAB0737005ECAA3 /* RepositoryProtocol.swift */,
+				0B35B9A12EAB0737005ECAA3 /* ServiceProtocol.swift */,
+				0B35B9A22EAB0737005ECAA3 /* WorkoutPersistenceServiceProtocol.swift */,
+			);
+			name = Protocols;
+			path = PaintMyTown/Protocols;
+			sourceTree = "<group>";
+		};
+		0B35B9A92EAB0737005ECAA3 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				0B35B9A42EAB0737005ECAA3 /* ActivityRepository.swift */,
+				0B35B9A52EAB0737005ECAA3 /* ActivityRepositoryProtocol.swift */,
+				0B35B9A62EAB0737005ECAA3 /* CoreDataStack.swift */,
+				0B35B9A72EAB0737005ECAA3 /* CoverageTileRepository.swift */,
+				0B35B9A82EAB0737005ECAA3 /* CoverageTileRepositoryProtocol.swift */,
+			);
+			name = Repositories;
+			path = PaintMyTown/Repositories;
+			sourceTree = "<group>";
+		};
+		0B35B9B22EAB0737005ECAA3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0B35B9AA2EAB0737005ECAA3 /* AudioFeedbackService.swift */,
+				0B35B9AB2EAB0737005ECAA3 /* LocationService.swift */,
+				0B35B9AC2EAB0737005ECAA3 /* LocationServiceProtocol.swift */,
+				0B35B9AD2EAB0737005ECAA3 /* RecoveryService.swift */,
+				0B35B9AE2EAB0737005ECAA3 /* SplitCalculator.swift */,
+				0B35B9AF2EAB0737005ECAA3 /* WorkoutPersistenceService.swift */,
+				0B35B9B02EAB0737005ECAA3 /* WorkoutService.swift */,
+				0B35B9B12EAB0737005ECAA3 /* WorkoutServiceProtocol.swift */,
+			);
+			name = Services;
+			path = PaintMyTown/Services;
+			sourceTree = "<group>";
+		};
+		0B35B9BA2EAB0737005ECAA3 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0B35B9B32EAB0737005ECAA3 /* DependencyContainer.swift */,
+				0B35B9B42EAB0737005ECAA3 /* Injected.swift */,
+				0B35B9B52EAB0737005ECAA3 /* LocationFilter.swift */,
+				0B35B9B62EAB0737005ECAA3 /* LocationSmoother.swift */,
+				0B35B9B72EAB0737005ECAA3 /* Logger.swift */,
+				0B35B9B82EAB0737005ECAA3 /* PermissionManager.swift */,
+				0B35B9B92EAB0737005ECAA3 /* UserDefaultsManager.swift */,
+			);
+			name = Utils;
+			path = PaintMyTown/Utils;
+			sourceTree = "<group>";
+		};
+		0B35B9BC2EAB0737005ECAA3 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0B35B9BB2EAB0737005ECAA3 /* RecordViewModel.swift */,
+			);
+			name = ViewModels;
+			path = PaintMyTown/ViewModels;
+			sourceTree = "<group>";
+		};
+		0B35B9C12EAB0737005ECAA3 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0B35B9BD2EAB0737005ECAA3 /* ActivityTypeSelector.swift */,
+				0B35B9BE2EAB0737005ECAA3 /* MetricCard.swift */,
+				0B35B9BF2EAB0737005ECAA3 /* RouteMapView.swift */,
+				0B35B9C02EAB0737005ECAA3 /* WorkoutControlButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		0B35B9C42EAB0737005ECAA3 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				0B35B9C22EAB0737005ECAA3 /* PermissionDetailView.swift */,
+				0B35B9C32EAB0737005ECAA3 /* PermissionsView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		0B35B9C92EAB0737005ECAA3 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				0B35B9C52EAB0737005ECAA3 /* HistoryView.swift */,
+				0B35B9C62EAB0737005ECAA3 /* MapView.swift */,
+				0B35B9C72EAB0737005ECAA3 /* ProfileView.swift */,
+				0B35B9C82EAB0737005ECAA3 /* RecordView.swift */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		0B35B9CB2EAB0737005ECAA3 /* Workout */ = {
+			isa = PBXGroup;
+			children = (
+				0B35B9CA2EAB0737005ECAA3 /* WorkoutSummaryView.swift */,
+			);
+			path = Workout;
+			sourceTree = "<group>";
+		};
+		0B35B9CE2EAB0737005ECAA3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0B35B9C12EAB0737005ECAA3 /* Components */,
+				0B35B9C42EAB0737005ECAA3 /* Onboarding */,
+				0B35B9C92EAB0737005ECAA3 /* Tabs */,
+				0B35B9CB2EAB0737005ECAA3 /* Workout */,
+				0B35B9CC2EAB0737005ECAA3 /* AppTabView.swift */,
+				0B35B9CD2EAB0737005ECAA3 /* ErrorView.swift */,
+			);
+			name = Views;
+			path = PaintMyTown/Views;
+			sourceTree = "<group>";
+		};
 		A100000B000000000000001 = {
 			isa = PBXGroup;
 			children = (
 				A100000C000000000000001 /* PaintMyTown */,
 				A100000D000000000000001 /* Products */,
+				0B35B9812EAB0737005ECAA3 /* Coordinators */,
+				0B35B98E2EAB0737005ECAA3 /* CoreData */,
+				0B35B99E2EAB0737005ECAA3 /* Models */,
+				0B35B9A32EAB0737005ECAA3 /* Protocols */,
+				0B35B9A92EAB0737005ECAA3 /* Repositories */,
+				0B35B9B22EAB0737005ECAA3 /* Services */,
+				0B35B9BA2EAB0737005ECAA3 /* Utils */,
+				0B35B9BC2EAB0737005ECAA3 /* ViewModels */,
+				0B35B9CE2EAB0737005ECAA3 /* Views */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,6 +460,76 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B35B9CF2EAB0737005ECAA3 /* SplitCalculator.swift in Sources */,
+				0B35B9D02EAB0737005ECAA3 /* RouteMapView.swift in Sources */,
+				0B35B9D12EAB0737005ECAA3 /* ActivityEntity+CoreDataProperties.swift in Sources */,
+				0B35B9D22EAB0737005ECAA3 /* RepositoryProtocol.swift in Sources */,
+				0B35B9D32EAB0737005ECAA3 /* SplitEntity+CoreDataProperties.swift in Sources */,
+				0B35B9D42EAB0737005ECAA3 /* LocationSample.swift in Sources */,
+				0B35B9D52EAB0737005ECAA3 /* UserSettingsEntity+CoreDataProperties.swift in Sources */,
+				0B35B9D62EAB0737005ECAA3 /* AppCoordinator.swift in Sources */,
+				0B35B9D72EAB0737005ECAA3 /* WorkoutMetrics.swift in Sources */,
+				0B35B9D82EAB0737005ECAA3 /* PermissionDetailView.swift in Sources */,
+				0B35B9D92EAB0737005ECAA3 /* WorkoutPersistenceService.swift in Sources */,
+				0B35B9DA2EAB0737005ECAA3 /* Logger.swift in Sources */,
+				0B35B9DB2EAB0737005ECAA3 /* RecoveryService.swift in Sources */,
+				0B35B9DC2EAB0737005ECAA3 /* LocationFilter.swift in Sources */,
+				0B35B9DD2EAB0737005ECAA3 /* CoreDataStack.swift in Sources */,
+				0B35B9DE2EAB0737005ECAA3 /* LocationService.swift in Sources */,
+				0B35B9DF2EAB0737005ECAA3 /* CoverageTileEntity+CoreDataProperties.swift in Sources */,
+				0B35B9E02EAB0737005ECAA3 /* SplitEntity+CoreDataClass.swift in Sources */,
+				0B35B9E12EAB0737005ECAA3 /* WorkoutPersistenceServiceProtocol.swift in Sources */,
+				0B35B9E22EAB0737005ECAA3 /* ActivityRepositoryProtocol.swift in Sources */,
+				0B35B9E32EAB0737005ECAA3 /* ProfileCoordinator.swift in Sources */,
+				0B35B9E42EAB0737005ECAA3 /* Split.swift in Sources */,
+				0B35B9E52EAB0737005ECAA3 /* ProfileView.swift in Sources */,
+				0B35B9E62EAB0737005ECAA3 /* ActivityEntity+Mapper.swift in Sources */,
+				0B35B9E72EAB0737005ECAA3 /* LocationSampleEntity+CoreDataProperties.swift in Sources */,
+				0B35B9E82EAB0737005ECAA3 /* ActivityEntity+CoreDataClass.swift in Sources */,
+				0B35B9E92EAB0737005ECAA3 /* MapView.swift in Sources */,
+				0B35B9EA2EAB0737005ECAA3 /* AppError.swift in Sources */,
+				0B35B9EB2EAB0737005ECAA3 /* AudioFeedbackService.swift in Sources */,
+				0B35B9EC2EAB0737005ECAA3 /* DistanceUnit.swift in Sources */,
+				0B35B9ED2EAB0737005ECAA3 /* ActiveWorkout.swift in Sources */,
+				0B35B9EE2EAB0737005ECAA3 /* CoreDataModel.swift in Sources */,
+				0B35B9EF2EAB0737005ECAA3 /* WorkoutState.swift in Sources */,
+				0B35B9F02EAB0737005ECAA3 /* PermissionsView.swift in Sources */,
+				0B35B9F12EAB0737005ECAA3 /* HistoryCoordinator.swift in Sources */,
+				0B35B9F22EAB0737005ECAA3 /* WorkoutSummaryView.swift in Sources */,
+				0B35B9F32EAB0737005ECAA3 /* LocationSampleEntity+CoreDataClass.swift in Sources */,
+				0B35B9F42EAB0737005ECAA3 /* Injected.swift in Sources */,
+				0B35B9F52EAB0737005ECAA3 /* AppState.swift in Sources */,
+				0B35B9F62EAB0737005ECAA3 /* ActivityRepository.swift in Sources */,
+				0B35B9F72EAB0737005ECAA3 /* UserSettings.swift in Sources */,
+				0B35B9F82EAB0737005ECAA3 /* AppTabView.swift in Sources */,
+				0B35B9F92EAB0737005ECAA3 /* PausedInterval.swift in Sources */,
+				0B35B9FA2EAB0737005ECAA3 /* RecordCoordinator.swift in Sources */,
+				0B35B9FB2EAB0737005ECAA3 /* WorkoutControlButton.swift in Sources */,
+				0B35B9FC2EAB0737005ECAA3 /* RecordViewModel.swift in Sources */,
+				0B35B9FD2EAB0737005ECAA3 /* CoverageTileEntity+CoreDataClass.swift in Sources */,
+				0B35B9FE2EAB0737005ECAA3 /* WorkoutPersistenceError.swift in Sources */,
+				0B35B9FF2EAB0737005ECAA3 /* LocationServiceProtocol.swift in Sources */,
+				0B35BA002EAB0737005ECAA3 /* TrackingState.swift in Sources */,
+				0B35BA012EAB0737005ECAA3 /* DependencyContainer.swift in Sources */,
+				0B35BA022EAB0737005ECAA3 /* WorkoutService.swift in Sources */,
+				0B35BA032EAB0737005ECAA3 /* ServiceProtocol.swift in Sources */,
+				0B35BA042EAB0737005ECAA3 /* CoverageTile.swift in Sources */,
+				0B35BA052EAB0737005ECAA3 /* ActivityType.swift in Sources */,
+				0B35BA062EAB0737005ECAA3 /* UserSettingsEntity+CoreDataClass.swift in Sources */,
+				0B35BA072EAB0737005ECAA3 /* MetricCard.swift in Sources */,
+				0B35BA082EAB0737005ECAA3 /* HistoryView.swift in Sources */,
+				0B35BA092EAB0737005ECAA3 /* ActivityTypeSelector.swift in Sources */,
+				0B35BA0A2EAB0737005ECAA3 /* UserDefaultsManager.swift in Sources */,
+				0B35BA0B2EAB0737005ECAA3 /* Coordinator.swift in Sources */,
+				0B35BA0C2EAB0737005ECAA3 /* Activity.swift in Sources */,
+				0B35BA0D2EAB0737005ECAA3 /* RecordView.swift in Sources */,
+				0B35BA0E2EAB0737005ECAA3 /* CoverageTileRepositoryProtocol.swift in Sources */,
+				0B35BA0F2EAB0737005ECAA3 /* LocationSmoother.swift in Sources */,
+				0B35BA102EAB0737005ECAA3 /* WorkoutServiceProtocol.swift in Sources */,
+				0B35BA112EAB0737005ECAA3 /* CoverageTileRepository.swift in Sources */,
+				0B35BA122EAB0737005ECAA3 /* MapCoordinator.swift in Sources */,
+				0B35BA132EAB0737005ECAA3 /* PermissionManager.swift in Sources */,
+				0B35BA142EAB0737005ECAA3 /* ErrorView.swift in Sources */,
 				A1000003000000000000001 /* ContentView.swift in Sources */,
 				A1000001000000000000001 /* PaintMyTownApp.swift in Sources */,
 			);
