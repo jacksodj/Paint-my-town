@@ -330,7 +330,7 @@ final class LocationService: NSObject, LocationServiceProtocol {
 
             guard filterResult.isAccepted else {
                 if let reason = filterResult.rejectionReason {
-                    Logger.shared.debug("Location rejected: \(reason.description)", category: .location)
+                    Logger.shared.debug("Location rejected: \(reason.description)")
                 }
                 return
             }
@@ -345,8 +345,7 @@ final class LocationService: NSObject, LocationServiceProtocol {
             locationSubject.send(smoothedLocation)
 
             Logger.shared.debug(
-                "Location: lat=\(String(format: "%.6f", smoothedLocation.coordinate.latitude)), lon=\(String(format: "%.6f", smoothedLocation.coordinate.longitude)), acc=\(String(format: "%.1f", smoothedLocation.horizontalAccuracy))m",
-                category: .location
+                "Location: lat=\(String(format: "%.6f", smoothedLocation.coordinate.latitude)), lon=\(String(format: "%.6f", smoothedLocation.coordinate.longitude)), acc=\(String(format: "%.1f", smoothedLocation.horizontalAccuracy))m"
             )
         }
     }

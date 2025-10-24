@@ -11,6 +11,7 @@ import CoreLocation
 import CoreMotion
 import HealthKit
 import Combine
+import UIKit
 
 /// Represents the current state of a permission
 enum PermissionState: Equatable {
@@ -238,11 +239,12 @@ class PermissionManager: NSObject, PermissionManagerProtocol, ObservableObject {
 
                 let state: PermissionState
 
-                if let error = error as? CMError {
-                    switch error.code {
-                    case .motionActivityNotAuthorized:
+                if let error = error {
+                    let nsError = error as NSError
+                    switch Int(nsError.code) {
+                    case Int(CMErrorMotionActivityNotAuthorized.rawValue):
                         state = .denied
-                    case .motionActivityNotAvailable:
+                    case Int(CMErrorMotionActivityNotAvailable.rawValue):
                         state = .restricted
                     default:
                         state = .denied

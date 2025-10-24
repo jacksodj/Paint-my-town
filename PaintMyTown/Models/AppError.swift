@@ -8,7 +8,7 @@
 import Foundation
 
 /// Application-wide error types with user-friendly messages
-enum AppError: LocalizedError, Identifiable {
+enum AppError: LocalizedError, Identifiable, Equatable {
     // MARK: - Location Errors
 
     case locationPermissionDenied
@@ -272,3 +272,80 @@ enum LogLevel {
     case warning
     case error
 }
+
+// MARK: - Equatable Conformance
+
+extension AppError {
+    static func == (lhs: AppError, rhs: AppError) -> Bool {
+        switch (lhs, rhs) {
+        // Location Errors
+        case (.locationPermissionDenied, .locationPermissionDenied),
+             (.locationPermissionRestricted, .locationPermissionRestricted),
+             (.locationUnavailable, .locationUnavailable),
+             (.locationAccuracyTooLow, .locationAccuracyTooLow):
+            return true
+        case (.locationServicesFailed, .locationServicesFailed):
+            return true // Compare case only, not underlying error
+
+        // Database Errors
+        case (.databaseReadFailed, .databaseReadFailed),
+             (.databaseWriteFailed, .databaseWriteFailed),
+             (.databaseDeleteFailed, .databaseDeleteFailed):
+            return true
+        case (.databaseCorrupted, .databaseCorrupted),
+             (.recordNotFound, .recordNotFound):
+            return true
+
+        // Permission Errors
+        case (.permissionNotDetermined, .permissionNotDetermined):
+            return true
+        case (.permissionDenied(let lhsType), .permissionDenied(let rhsType)),
+             (.permissionRestricted(let lhsType), .permissionRestricted(let rhsType)):
+            return lhsType == rhsType
+
+        // Workout Errors
+        case (.workoutAlreadyActive, .workoutAlreadyActive),
+             (.noActiveWorkout, .noActiveWorkout),
+             (.insufficientDataForWorkout, .insufficientDataForWorkout):
+            return true
+        case (.workoutSaveFailed, .workoutSaveFailed):
+            return true
+
+        // HealthKit Errors
+        case (.healthKitNotAvailable, .healthKitNotAvailable),
+             (.healthKitPermissionDenied, .healthKitPermissionDenied):
+            return true
+        case (.healthKitWriteFailed, .healthKitWriteFailed),
+             (.healthKitReadFailed, .healthKitReadFailed):
+            return true
+
+        // Network Errors
+        case (.networkUnavailable, .networkUnavailable),
+             (.networkTimeout, .networkTimeout):
+            return true
+        case (.networkFailed, .networkFailed):
+            return true
+
+        // Import/Export Errors
+        case (.exportFailed, .exportFailed),
+             (.importFailed, .importFailed):
+            return true
+        case (.invalidFileFormat, .invalidFileFormat),
+             (.fileNotFound, .fileNotFound):
+            return true
+
+        // General Errors
+        case (.unknown, .unknown):
+            return true
+        case (.invalidInput(let lhsMsg), .invalidInput(let rhsMsg)):
+            return lhsMsg == rhsMsg
+        case (.operationCancelled, .operationCancelled):
+            return true
+
+        default:
+            return false
+        }
+    }
+}
+
+extension PermissionType: Equatable {}

@@ -24,7 +24,7 @@ struct PaintMyTownApp: App {
                 .onAppear {
                     appCoordinator.start()
                 }
-                .onChange(of: appState.currentError) { _, error in
+                .onChange(of: appState.currentError) { error in
                     // Handle app-level errors
                     if let error = error {
                         Logger.shared.error("App error: \(error.errorDescription ?? "Unknown")", category: .general)

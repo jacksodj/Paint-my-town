@@ -146,9 +146,10 @@ extension WorkoutPersistenceError {
     /// Validate an ActiveWorkout before saving
     static func validate(_ workout: ActiveWorkout) throws {
         // Check if workout has sufficient data
-        guard workout.hasSufficientData else {
+        let hasSufficientData = workout.locations.count >= 2 && workout.metrics.distance >= 10.0
+        guard hasSufficientData else {
             throw WorkoutPersistenceError.insufficientData(
-                reason: "Workout has only \(workout.locations.count) locations and \(String(format: "%.1f", workout.distance))m distance"
+                reason: "Workout has only \(workout.locations.count) locations and \(String(format: "%.1f", workout.metrics.distance))m distance"
             )
         }
 
@@ -157,12 +158,12 @@ extension WorkoutPersistenceError {
             throw WorkoutPersistenceError.missingRequiredData(field: "locations")
         }
 
-        // Check if workout has valid dates
-        guard workout.endDate != nil else {
-            throw WorkoutPersistenceError.invalidWorkoutData(reason: "Workout has not been ended")
+        // Check if workout has been stopped
+        guard workout.state == .stopped else {
+            throw WorkoutPersistenceError.invalidWorkoutData(reason: "Workout has not been stopped")
         }
 
-        guard workout.duration > 0 else {
+        guard workout.metrics.movingTime > 0 else {
             throw WorkoutPersistenceError.invalidWorkoutData(reason: "Workout duration must be greater than 0")
         }
 

@@ -118,7 +118,9 @@ final class WorkoutService: WorkoutServiceProtocol {
         startBackgroundSaveTimer()
 
         // Update app state
-        appState.setActiveWorkout(workout)
+        Task { @MainActor in
+            appState.setActiveWorkout(workout)
+        }
         activeWorkoutSubject.send(workout)
 
         Logger.shared.info("Started workout: \(type.displayName)", category: .workout)
@@ -195,7 +197,9 @@ final class WorkoutService: WorkoutServiceProtocol {
         consecutiveSlowLocationCount = 0
 
         // Update app state
-        appState.setActiveWorkout(nil)
+        Task { @MainActor in
+            appState.setActiveWorkout(nil)
+        }
         activeWorkoutSubject.send(nil)
 
         // Clean up temporary file
@@ -224,7 +228,9 @@ final class WorkoutService: WorkoutServiceProtocol {
         consecutiveSlowLocationCount = 0
 
         // Update app state
-        appState.setActiveWorkout(nil)
+        Task { @MainActor in
+            appState.setActiveWorkout(nil)
+        }
         activeWorkoutSubject.send(nil)
 
         // Clean up temporary file
@@ -319,7 +325,7 @@ final class WorkoutService: WorkoutServiceProtocol {
         // For now, they're already in the ActiveWorkout.locations array
         // This would be where we'd write to a temporary file or database
 
-        Logger.shared.debug("Flushed \(locationBuffer.count) locations from buffer", category: .workout)
+        Logger.shared.debug("Flushed \(locationBuffer.count) locations from buffer")
         locationBuffer.removeAll()
     }
 
@@ -345,7 +351,7 @@ final class WorkoutService: WorkoutServiceProtocol {
         guard activeWorkout != nil else { return }
 
         saveTemporaryWorkoutState()
-        Logger.shared.debug("Performed background save", category: .workout)
+        Logger.shared.debug("Performed background save")
     }
 
     // MARK: - Crash Recovery
@@ -367,7 +373,7 @@ final class WorkoutService: WorkoutServiceProtocol {
             // Write to file
             try data.write(to: tempFile, options: .atomic)
 
-            Logger.shared.debug("Saved temporary workout state", category: .workout)
+            Logger.shared.debug("Saved temporary workout state")
         } catch {
             Logger.shared.error("Failed to save temporary workout state: \(error.localizedDescription)", category: .workout)
         }
@@ -400,7 +406,7 @@ final class WorkoutService: WorkoutServiceProtocol {
         do {
             if FileManager.default.fileExists(atPath: tempFile.path) {
                 try FileManager.default.removeItem(at: tempFile)
-                Logger.shared.debug("Cleaned up temporary workout file", category: .workout)
+                Logger.shared.debug("Cleaned up temporary workout file")
             }
         } catch {
             Logger.shared.error("Failed to clean up temporary file: \(error.localizedDescription)", category: .workout)

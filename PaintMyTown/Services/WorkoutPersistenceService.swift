@@ -56,8 +56,8 @@ class WorkoutPersistenceService: WorkoutPersistenceServiceProtocol {
         let activity = activeWorkout.toActivity(notes: notes)
 
         // Start background task to ensure completion even if app is backgrounded
-        let backgroundTaskID = await startBackgroundTask()
-        defer { endBackgroundTask(backgroundTaskID) }
+        let backgroundTaskID = await MainActor.run { startBackgroundTask() }
+        defer { Task { @MainActor in endBackgroundTask(backgroundTaskID) } }
 
         do {
             // Try to save the workout with retry logic

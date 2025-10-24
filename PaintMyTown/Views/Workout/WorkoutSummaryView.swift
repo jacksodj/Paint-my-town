@@ -241,8 +241,8 @@ struct RoutePreviewMap: View {
     )
 
     var body: some View {
-        Map(coordinateRegion: .constant(region), annotationItems: []) { _ in
-            MapPin(coordinate: region.center)
+        Map(coordinateRegion: .constant(region), annotationItems: [RoutePoint]()) { point in
+            MapPin(coordinate: point.coordinate)
         }
         .disabled(true)
         .onAppear {

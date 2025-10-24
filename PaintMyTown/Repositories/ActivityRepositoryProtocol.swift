@@ -71,7 +71,7 @@ struct ActivityFilter {
 }
 
 /// Date range for filtering
-struct DateRange {
+struct DateRange: Equatable {
     let start: Date
     let end: Date
 
