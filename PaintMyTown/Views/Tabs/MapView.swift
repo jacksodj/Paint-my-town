@@ -2,100 +2,279 @@
 //  MapView.swift
 //  PaintMyTown
 //
-//  Created on 2025-10-23.
+//  Main view for the Map tab - coverage visualization
 //
 
 import SwiftUI
 import MapKit
 
 /// Main view for the Map tab - coverage visualization
-/// TODO: Full implementation in M2 (Coverage & Filters)
 struct MapView: View {
     @ObservedObject var coordinator: MapCoordinator
     @EnvironmentObject var appState: AppState
+    @StateObject private var viewModel = CoverageMapViewModel()
 
     var body: some View {
         NavigationStack(path: $coordinator.navigationPath) {
             ZStack {
-                // Background color
-                Color(.systemGroupedBackground)
-                    .ignoresSafeArea()
+                // Map view
+                CoverageMapContentView(viewModel: viewModel)
+                    .ignoresSafeArea(edges: .top)
 
-                VStack(spacing: 20) {
+                // Overlay UI
+                VStack {
                     Spacer()
 
-                    // Placeholder icon
-                    Image(systemName: "map")
-                        .font(.system(size: 80))
-                        .foregroundColor(.accentColor)
-
-                    // Title
-                    Text("Coverage Map")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-
-                    // Description
-                    Text("Visualize all the places you've explored")
-                        .font(.body)
-                        .foregroundColor(.secondary)
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal)
-
-                    // Feature list
-                    VStack(alignment: .leading, spacing: 12) {
-                        MapFeatureRow(icon: "map.fill", text: "Heatmap visualization")
-                        MapFeatureRow(icon: "square.grid.3x3.fill", text: "Area fill coverage")
-                        MapFeatureRow(icon: "line.3.horizontal.decrease.circle", text: "Advanced filters")
+                    // Statistics card
+                    if let stats = viewModel.statistics {
+                        StatisticsCard(
+                            stats: stats,
+                            formattedArea: viewModel.formattedArea()
+                        )
+                        .padding()
+                        .transition(.move(edge: .bottom))
                     }
-                    .padding()
-                    .background(Color(.systemBackground))
-                    .cornerRadius(12)
-                    .padding(.horizontal)
-
-                    // Coming soon badge
-                    Text("Coming in M2")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 6)
-                        .background(Color.secondary.opacity(0.2))
-                        .cornerRadius(8)
-                        .padding(.top, 8)
-
-                    Spacer()
                 }
-                .padding()
+
+                // Loading overlay
+                if viewModel.isLoading {
+                    LoadingOverlay(progress: viewModel.progress)
+                }
             }
-            .navigationTitle("Map")
+            .navigationTitle("Coverage Map")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        coordinator.showFilterSheet()
-                    }) {
-                        Image(systemName: "line.3.horizontal.decrease.circle")
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Menu {
+                        ForEach([CoverageAlgorithmType.areaFill, .heatmap, .routeLines], id: \.self) { type in
+                            Button(action: {
+                                Task {
+                                    await viewModel.changeVisualizationType(type)
+                                }
+                            }) {
+                                Label(type.displayName, systemImage: type.iconName)
+                                if viewModel.visualizationType == type {
+                                    Image(systemName: "checkmark")
+                                }
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "map")
                     }
-                    .disabled(true)
+                }
+
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    HStack(spacing: 12) {
+                        // Filter button
+                        Button(action: {
+                            viewModel.showFilterSheet = true
+                        }) {
+                            ZStack(alignment: .topTrailing) {
+                                Image(systemName: "line.3.horizontal.decrease.circle")
+
+                                // Badge for active filters
+                                if viewModel.activeFilterCount() > 0 {
+                                    Circle()
+                                        .fill(Color.red)
+                                        .frame(width: 8, height: 8)
+                                        .offset(x: 4, y: -4)
+                                }
+                            }
+                        }
+
+                        // Refresh button
+                        Button(action: {
+                            Task {
+                                await viewModel.refresh()
+                            }
+                        }) {
+                            Image(systemName: "arrow.clockwise")
+                        }
+                        .disabled(viewModel.isLoading)
+                    }
+                }
+            }
+            .sheet(isPresented: $viewModel.showFilterSheet) {
+                FilterSheetView(
+                    filter: $viewModel.activeFilter,
+                    onApply: { filter in
+                        Task {
+                            await viewModel.applyFilter(filter)
+                        }
+                    },
+                    onClear: {
+                        Task {
+                            await viewModel.clearFilter()
+                        }
+                    }
+                )
+            }
+            .alert("Error", isPresented: .constant(viewModel.errorMessage != nil)) {
+                Button("OK") {
+                    viewModel.errorMessage = nil
+                }
+            } message: {
+                if let errorMessage = viewModel.errorMessage {
+                    Text(errorMessage)
                 }
             }
         }
     }
 }
 
-// MARK: - Supporting Views
+// MARK: - Coverage Map Content
 
-private struct MapFeatureRow: View {
-    let icon: String
-    let text: String
+private struct CoverageMapContentView: View {
+    @ObservedObject var viewModel: CoverageMapViewModel
 
     var body: some View {
-        HStack(spacing: 12) {
+        Map(
+            coordinateRegion: $viewModel.mapRegion,
+            interactionModes: .all,
+            showsUserLocation: true,
+            annotationItems: []
+        ) { _ in
+            // Empty for now - will be replaced with overlay rendering
+        }
+        .mapStyle(viewModel.mapType.mapStyle)
+        .onChange(of: viewModel.mapRegion) { newRegion in
+            Task {
+                await viewModel.updateMapRegion(newRegion)
+            }
+        }
+    }
+}
+
+// MARK: - Statistics Card
+
+private struct StatisticsCard: View {
+    let stats: CoverageStatistics
+    let formattedArea: String
+
+    var body: some View {
+        VStack(spacing: 8) {
+            HStack(spacing: 20) {
+                StatisticItem(
+                    title: "Area Covered",
+                    value: formattedArea,
+                    icon: "map.fill"
+                )
+
+                Divider()
+                    .frame(height: 40)
+
+                StatisticItem(
+                    title: "Locations",
+                    value: "\(stats.totalTiles)",
+                    icon: "location.fill"
+                )
+
+                Divider()
+                    .frame(height: 40)
+
+                StatisticItem(
+                    title: "Visits",
+                    value: "\(stats.totalVisits)",
+                    icon: "figure.walk"
+                )
+            }
+        }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color(.systemBackground))
+                .shadow(color: Color.black.opacity(0.1), radius: 10, x: 0, y: 5)
+        )
+    }
+}
+
+private struct StatisticItem: View {
+    let title: String
+    let value: String
+    let icon: String
+
+    var body: some View {
+        VStack(spacing: 4) {
             Image(systemName: icon)
                 .foregroundColor(.accentColor)
-                .frame(width: 24)
-            Text(text)
-                .font(.body)
-            Spacer()
+                .font(.title3)
+
+            Text(value)
+                .font(.headline)
+                .fontWeight(.semibold)
+
+            Text(title)
+                .font(.caption)
+                .foregroundColor(.secondary)
+        }
+        .frame(maxWidth: .infinity)
+    }
+}
+
+// MARK: - Loading Overlay
+
+private struct LoadingOverlay: View {
+    let progress: Double
+
+    var body: some View {
+        ZStack {
+            Color.black.opacity(0.3)
+                .ignoresSafeArea()
+
+            VStack(spacing: 16) {
+                ProgressView()
+                    .scaleEffect(1.5)
+                    .tint(.white)
+
+                if progress > 0 && progress < 1 {
+                    Text("Calculating coverage...")
+                        .foregroundColor(.white)
+                        .font(.subheadline)
+
+                    ProgressView(value: progress)
+                        .frame(width: 200)
+                        .tint(.white)
+                } else {
+                    Text("Loading...")
+                        .foregroundColor(.white)
+                        .font(.subheadline)
+                }
+            }
+            .padding(24)
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(Color.black.opacity(0.7))
+            )
+        }
+    }
+}
+
+// MARK: - Extensions
+
+private extension MKMapType {
+    var mapStyle: MapStyle {
+        switch self {
+        case .standard:
+            return .standard
+        case .satellite:
+            return .imagery
+        case .hybrid:
+            return .hybrid
+        default:
+            return .standard
+        }
+    }
+}
+
+private extension CoverageAlgorithmType {
+    var iconName: String {
+        switch self {
+        case .areaFill:
+            return "square.grid.3x3.fill"
+        case .heatmap:
+            return "map.fill"
+        case .routeLines:
+            return "timeline"
         }
     }
 }
