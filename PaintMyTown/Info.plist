@@ -55,6 +55,11 @@
 		<string>location</string>
 		<string>processing</string>
 	</array>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>com.paintmytown.refresh</string>
+		<string>com.paintmytown.cleanup</string>
+	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Paint My Town tracks your location during workouts to map where you've explored.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
