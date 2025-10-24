@@ -52,6 +52,11 @@ class AppCoordinator: ObservableObject, Coordinator {
             container.register(ActivityRepositoryProtocol.self, instance: activityRepo)
         }
 
+        if !container.isRegistered(CoverageTileRepositoryProtocol.self) {
+            let coverageRepo = CoverageTileRepository(coreDataStack: CoreDataStack.shared)
+            container.register(CoverageTileRepositoryProtocol.self, instance: coverageRepo)
+        }
+
         // Register services
         if !container.isRegistered(LocationServiceProtocol.self) {
             let locationService = LocationService()
@@ -63,6 +68,17 @@ class AppCoordinator: ObservableObject, Coordinator {
             let activityRepo = container.resolve(ActivityRepositoryProtocol.self)
             let workoutService = WorkoutService(locationService: locationService, repository: activityRepo)
             container.register(WorkoutServiceProtocol.self, instance: workoutService)
+        }
+
+        if !container.isRegistered(CoverageServiceProtocol.self) {
+            let activityRepo = container.resolve(ActivityRepositoryProtocol.self)
+            let coverageRepo = container.resolve(CoverageTileRepositoryProtocol.self)
+            let coverageService = CoverageService(
+                activityRepository: activityRepo,
+                coverageTileRepository: coverageRepo,
+                logger: Logger.shared
+            )
+            container.register(CoverageServiceProtocol.self, instance: coverageService)
         }
     }
 
